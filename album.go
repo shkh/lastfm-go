@@ -7,9 +7,6 @@ type albumApi struct {
 //album.addTags
 func (api albumApi) AddTags(args P) (err error) {
 	defer func() { appendCaller(err, "lastfm.Album.AddTags") }()
-	if err = requireAuth(api.creds); err != nil {
-		return
-	}
 	err = callPost("album.addtags", api.creds, args, nil, P{
 		"normal": []string{"artist", "album", "tags"},
 	})
@@ -47,9 +44,6 @@ func (api albumApi) GetShouts(args P) (result AlbumGetShouts, err error) {
 func (api albumApi) GetTags(args P) (result AlbumGetTags, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.GetTags") }()
 	if _, ok := args["user"]; !ok {
-		if err = requireAuth(api.creds); err != nil {
-			return
-		}
 		args["user"] = api.creds.username
 	}
 	err = callGet("album.gettags", api.creds, args, &result, P{
@@ -70,9 +64,6 @@ func (api albumApi) GetTopTags(args P) (result AlbumGetTopTags, err error) {
 //album.removeTag
 func (api albumApi) RemoveTag(args P) (err error) {
 	defer func() { appendCaller(err, "lastfm.Album.RemoveTag") }()
-	if err = requireAuth(api.creds); err != nil {
-		return
-	}
 	err = callPost("album.removetag", api.creds, args, nil, P{
 		"normal": []string{"artist", "album", "tag"},
 	})
@@ -91,9 +82,6 @@ func (api albumApi) Search(args P) (result AlbumSearch, err error) {
 //album.share
 func (api albumApi) Share(args P) (err error) {
 	defer func() { appendCaller(err, "lastfm.Album.Share") }()
-	if err = requireAuth(api.creds); err != nil {
-		return
-	}
 	err = callPost("album.share", api.creds, args, nil, P{
 		"normal": []string{"artist", "album", "public", "message", "recipient"},
 	})

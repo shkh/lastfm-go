@@ -11,15 +11,15 @@ type P map[string]interface{}
 
 type Api struct {
 	creds *credentials
-    Album       *albumApi
-    Artist      *artistApi
+    //Album       *albumApi
+    //Artist      *artistApi
 	//Event       *eventApi
 	//Geo         *geoApi
 	//Group       *groupApi
-	Library *libraryApi
+	//Library *libraryApi
 	//Tasteometer *tasteometerApi
-	Track *trackApi
-	User  *userApi
+	//Track *trackApi
+    User  *userApi
 	//Venue       *venueApi
 }
 
@@ -34,15 +34,15 @@ func New(key, secret string) (api *Api) {
 	c := credentials{key, secret, "", ""}
 	api = &Api{
 		creds: &c,
-        Album:       &albumApi{&c},
-        Artist:      &artistApi{&c},
+        //Album:       &albumApi{&c},
+        //Artist:      &artistApi{&c},
 		//Event:       &eventApi{&c},
 		//Geo:         &geoApi{&c},
 		//Group:       &groupApi{&c},
-		Library: &libraryApi{&c},
-		Track:   &trackApi{&c},
+		//Library: &libraryApi{&c},
+		//Track:   &trackApi{&c},
 		//Tasteometer: &tasteometerApi{&c},
-		User: &userApi{&c},
+        User: &userApi{&c},
 		//Venue:       &venueApi{&c},
 	}
 	return
