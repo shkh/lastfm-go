@@ -94,6 +94,25 @@ func parseResponse(body []byte, result interface{}) (err error) {
 	return
 }
 
+func getSignature(params map[string]string, secret string) (sig string) {
+	var keys []string
+	for k := range params {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	var sigPlain string
+	for _, k := range keys {
+		sigPlain += k + params[k]
+	}
+	sigPlain += secret
+
+	hasher := md5.New()
+	hasher.Write([]byte(sigPlain))
+	sig = hex.EncodeToString(hasher.Sum(nil))
+	return
+}
+
 func formatArgs(args, rules P) (result map[string]string, err error) {
 
 	result = make(map[string]string)
@@ -187,9 +206,7 @@ func formatArgs(args, rules P) (result map[string]string, err error) {
 /////////////
 // GET API //
 /////////////
-
 func callGet(apiMethod string, creds *credentials, args P, result interface{}, rules P) (err error) {
-
 	urlParams := url.Values{}
 	urlParams.Add("method", apiMethod)
 	urlParams.Add("api_key", creds.apikey)
@@ -220,26 +237,10 @@ func callGet(apiMethod string, creds *credentials, args P, result interface{}, r
 //POST API//
 ////////////
 
-func getSignature(params map[string]string, secret string) (sig string) {
-	var keys []string
-	for k := range params {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
-
-	var sigPlain string
-	for _, k := range keys {
-		sigPlain += k + params[k]
-	}
-	sigPlain += secret
-
-	hasher := md5.New()
-	hasher.Write([]byte(sigPlain))
-	sig = hex.EncodeToString(hasher.Sum(nil))
-	return
-}
-
 func callPost(apiMethod string, creds *credentials, args P, result interface{}, rules P) (err error) {
+	if err = requireAuth(creds); err != nil {
+		return
+	}
 
 	urlParams := url.Values{}
 	urlParams.Add("method", apiMethod)
