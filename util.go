@@ -13,8 +13,8 @@ import (
 	"strings"
 )
 
-func requireAuth(creds *credentials) (err error) {
-	if creds.sk == "" {
+func requireAuth(params *apiParams) (err error) {
+	if params.sk == "" {
 		err = newLibError(
 			ErrorAuthRequired,
 			Messages[ErrorAuthRequired],
@@ -43,12 +43,12 @@ func checkRequiredParams(params P, required ...string) (err error) {
 }
 */
 
-func constructUrl(base string, params url.Values) (u string) {
-	if ResponseFormat == "json" {
-		params.Add("format", ResponseFormat)
-	}
+func constructUrl(base string, params url.Values) (uri string) {
+	//if ResponseFormat == "json" {
+	//params.Add("format", ResponseFormat)
+	//}
 	p := params.Encode()
-	u = base + "?" + p
+	uri = base + "?" + p
 	return
 }
 
@@ -171,8 +171,8 @@ func formatArgs(args, rules P) (result map[string]string, err error) {
 		return
 	}
 
-	if _, ok := rules["normal"]; ok {
-		for _, key := range rules["normal"].([]string) {
+	if _, ok := rules["plain"]; ok {
+		for _, key := range rules["plain"].([]string) {
 			if valI, ok := args[key]; ok {
 				var val string
 				switch valI.(type) {
@@ -206,10 +206,10 @@ func formatArgs(args, rules P) (result map[string]string, err error) {
 /////////////
 // GET API //
 /////////////
-func callGet(apiMethod string, creds *credentials, args P, result interface{}, rules P) (err error) {
+func callGet(apiMethod string, params *apiParams, args map[string]interface{}, result interface{}, rules P) (err error) {
 	urlParams := url.Values{}
 	urlParams.Add("method", apiMethod)
-	urlParams.Add("api_key", creds.apikey)
+	urlParams.Add("api_key", params.apikey)
 
 	formated, err := formatArgs(args, rules)
 	if err != nil {
@@ -221,7 +221,16 @@ func callGet(apiMethod string, creds *credentials, args P, result interface{}, r
 
 	uri := constructUrl(UriApiBase, urlParams)
 
-	res, err := http.Get(uri)
+    client := &http.Client {}
+    req, err := http.NewRequest ("GET", uri, nil)
+    if err != nil {
+        return
+    }
+	if params.useragent != "" {
+		req.Header.Set("User-Agent", params.useragent)
+	}
+
+    res, err := client.Do (req)
 	if err != nil {
 		return
 	}
@@ -233,12 +242,12 @@ func callGet(apiMethod string, creds *credentials, args P, result interface{}, r
 	return
 }
 
-////////////
-//POST API//
-////////////
+//////////////
+// POST API //
+//////////////
 
-func callPost(apiMethod string, creds *credentials, args P, result interface{}, rules P) (err error) {
-	if err = requireAuth(creds); err != nil {
+func callPost(apiMethod string, params *apiParams, args P, result interface{}, rules P) (err error) {
+	if err = requireAuth(params); err != nil {
 		return
 	}
 
@@ -249,13 +258,13 @@ func callPost(apiMethod string, creds *credentials, args P, result interface{}, 
 	//post data
 	postData := url.Values{}
 	postData.Add("method", apiMethod)
-	postData.Add("api_key", creds.apikey)
-	postData.Add("sk", creds.sk)
+	postData.Add("api_key", params.apikey)
+	postData.Add("sk", params.sk)
 
 	tmp := make(map[string]string)
 	tmp["method"] = apiMethod
-	tmp["api_key"] = creds.apikey
-	tmp["sk"] = creds.sk
+	tmp["api_key"] = params.apikey
+	tmp["sk"] = params.sk
 
 	formated, err := formatArgs(args, rules)
 	for k, v := range formated {
@@ -263,10 +272,21 @@ func callPost(apiMethod string, creds *credentials, args P, result interface{}, 
 		postData.Add(k, v)
 	}
 
-	sig := getSignature(tmp, creds.secret)
+	sig := getSignature(tmp, params.secret)
 	postData.Add("api_sig", sig)
 
-	res, err := http.PostForm(uri, postData)
+	client := &http.Client{}
+	req, err := http.NewRequest("POST", uri, strings.NewReader (postData.Encode ()))
+	if err != nil {
+		return
+	}
+    req.Header.Set ("Content-Type", "application/x-www-form-urlencoded")
+	if params.useragent != "" {
+		req.Header.Set("User-Agent", params.useragent)
+	}
+
+	res, err := client.Do(req)
+	//res, err := http.PostForm(uri, postData)
 	if err != nil {
 		return
 	}
@@ -278,7 +298,7 @@ func callPost(apiMethod string, creds *credentials, args P, result interface{}, 
 	return
 }
 
-func callPostWithoutSession(apiMethod string, creds *credentials, args P, result interface{}, rules P) (err error) {
+func callPostWithoutSession(apiMethod string, params *apiParams, args P, result interface{}, rules P) (err error) {
 	urlParams := url.Values{}
 	urlParams.Add("method", apiMethod)
 	uri := constructUrl(UriApiSecBase, urlParams)
@@ -286,11 +306,11 @@ func callPostWithoutSession(apiMethod string, creds *credentials, args P, result
 	//post data
 	postData := url.Values{}
 	postData.Add("method", apiMethod)
-	postData.Add("api_key", creds.apikey)
+	postData.Add("api_key", params.apikey)
 
 	tmp := make(map[string]string)
 	tmp["method"] = apiMethod
-	tmp["api_key"] = creds.apikey
+	tmp["api_key"] = params.apikey
 
 	formated, err := formatArgs(args, rules)
 	for k, v := range formated {
@@ -298,7 +318,7 @@ func callPostWithoutSession(apiMethod string, creds *credentials, args P, result
 		postData.Add(k, v)
 	}
 
-	sig := getSignature(tmp, creds.secret)
+	sig := getSignature(tmp, params.secret)
 	postData.Add("api_sig", sig)
 
 	//call API

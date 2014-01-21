@@ -1,104 +1,104 @@
 package lastfm
 
 type geoApi struct {
-	creds *credentials
+    params *apiParams
 }
 
 //geo.getEvents
-func (api geoApi) GetEvents(args P) (result GeoGetEvents, err error) {
+func (api geoApi) GetEvents(args map[string]interface{}) (result GeoGetEvents, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetEvents") }()
-	err = callGet("geo.getevents", api.creds, args, &result, P{
-		"normal": []string{"long", "lat", "location", "distance", "page", "tag", "festivalsonly", "limit"},
+	err = callGet("geo.getevents", api.params, args, &result, P{
+		"plain": []string{"long", "lat", "location", "distance", "page", "tag", "festivalsonly", "limit"},
 	})
 	return
 }
 
 //geo.getMetroArtistChart
-func (api geoApi) GetMetroArtistChart(args P) (result GeoGetMetroArtistChart, err error) {
+func (api geoApi) GetMetroArtistChart(args map[string]interface{}) (result GeoGetMetroArtistChart, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetroArtistChart") }()
-	err = callGet("geo.getmetroartistchart", api.creds, args, &result, P{
-		"normal": []string{"metro", "country", "start", "end", "page", "limit"},
+	err = callGet("geo.getmetroartistchart", api.params, args, &result, P{
+		"plain": []string{"metro", "country", "start", "end", "page", "limit"},
 	})
 	return
 }
 
 //geo.getMetroHypeArtistChart
-func (api geoApi) GetMetroHypeArtistChart(args P) (result GeoGetMetroHypeArtistChart, err error) {
+func (api geoApi) GetMetroHypeArtistChart(args map[string]interface{}) (result GeoGetMetroHypeArtistChart, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetroHypeArtistChart") }()
-	err = callGet("geo.getmetrohypeartistchart", api.creds, args, &result, P{
-		"normal": []string{"metro", "country", "start", "end", "page", "limit"},
+	err = callGet("geo.getmetrohypeartistchart", api.params, args, &result, P{
+		"plain": []string{"metro", "country", "start", "end", "page", "limit"},
 	})
 	return
 }
 
 //geo.getMetroHypeTrackChart
-func (api geoApi) GetMetroHypeTrackChart(args P) (result GeoGetMetroHypeTrackChart, err error) {
+func (api geoApi) GetMetroHypeTrackChart(args map[string]interface{}) (result GeoGetMetroHypeTrackChart, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetroHypeTrackChart") }()
-	err = callGet("geo.getmetrohypetrackchart", api.creds, args, &result, P{
-		"normal": []string{"metro", "country", "start", "end", "page", "limit"},
+	err = callGet("geo.getmetrohypetrackchart", api.params, args, &result, P{
+		"plain": []string{"metro", "country", "start", "end", "page", "limit"},
 	})
 	return
 }
 
 //geo.getMetroTrackChart
-func (api geoApi) GetMetroTrackChart(args P) (result GeoGetMetroTrackChart, err error) {
+func (api geoApi) GetMetroTrackChart(args map[string]interface{}) (result GeoGetMetroTrackChart, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetroTrackChart") }()
-	err = callGet("geo.getmetrotrackchart", api.creds, args, &result, P{
-		"normal": []string{"metro", "country", "start", "end", "page", "limit"},
+	err = callGet("geo.getmetrotrackchart", api.params, args, &result, P{
+		"plain": []string{"metro", "country", "start", "end", "page", "limit"},
 	})
 	return
 }
 
 //geo.getMetroUniqueArtistChart
-func (api geoApi) GetMetroUniqueArtistChart(args P) (result GeoGetMetroUniqueArtistChart, err error) {
+func (api geoApi) GetMetroUniqueArtistChart(args map[string]interface{}) (result GeoGetMetroUniqueArtistChart, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetroUniqueArtistChart") }()
-	err = callGet("geo.getmetrouniqueartistchart", api.creds, args, &result, P{
-		"normal": []string{"metro", "country", "start", "end", "page", "limit"},
+	err = callGet("geo.getmetrouniqueartistchart", api.params, args, &result, P{
+		"plain": []string{"metro", "country", "start", "end", "page", "limit"},
 	})
 	return
 }
 
 //geo.getMetroUniqueTrackChart
-func (api geoApi) GetMetroUniqueChartChart(args P) (result GeoGetMetroUniqueTrackChart, err error) {
+func (api geoApi) GetMetroUniqueChartChart(args map[string]interface{}) (result GeoGetMetroUniqueTrackChart, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetroUniqueTrackChart") }()
-	err = callGet("geo.getmetrouniquetrackchart", api.creds, args, &result, P{
-		"normal": []string{"metro", "country", "start", "end", "page", "limit"},
+	err = callGet("geo.getmetrouniquetrackchart", api.params, args, &result, P{
+		"plain": []string{"metro", "country", "start", "end", "page", "limit"},
 	})
 	return
 }
 
 //geo.getMetroWeeklyChartlist
-func (api geoApi) GetMetroWeeklyChartlist(args P) (result GeoGetMetroWeeklyChartlist, err error) {
+func (api geoApi) GetMetroWeeklyChartlist(args map[string]interface{}) (result GeoGetMetroWeeklyChartlist, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetroWeeklyChartlist") }()
-	err = callGet("geo.getmetroweeklychartlist", api.creds, args, &result, P{
-		"normal": []string{"metro"},
+	err = callGet("geo.getmetroweeklychartlist", api.params, args, &result, P{
+		"plain": []string{"metro"},
 	})
 	return
 }
 
 //geo.getMetros
-func (api geoApi) GetMetros(args P) (result GeoGetMetros, err error) {
+func (api geoApi) GetMetros(args map[string]interface{}) (result GeoGetMetros, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetMetros") }()
-	err = callGet("geo.getmetros", api.creds, args, &result, P{
-		"normal": []string{"country"},
+	err = callGet("geo.getmetros", api.params, args, &result, P{
+		"plain": []string{"country"},
 	})
 	return
 }
 
 //geo.getTopArtists
-func (api geoApi) GetTopArtists(args P) (result GeoGetTopArtists, err error) {
+func (api geoApi) GetTopArtists(args map[string]interface{}) (result GeoGetTopArtists, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetTopArtists") }()
-	err = callGet("geo.gettopartists", api.creds, args, &result, P{
-		"normal": []string{"country", "limit", "page"},
+	err = callGet("geo.gettopartists", api.params, args, &result, P{
+		"plain": []string{"country", "limit", "page"},
 	})
 	return
 }
 
 //geo.getTopTracks
-func (api geoApi) GetTopTracks(args P) (result GeoGetTopTracks, err error) {
+func (api geoApi) GetTopTracks(args map[string]interface{}) (result GeoGetTopTracks, err error) {
 	defer func() { appendCaller(err, "lastfm.Geo.GetTopTracks") }()
-	err = callGet("geo.gettoptracks", api.creds, args, &result, P{
-		"normal": []string{"country", "location", "limit", "page"},
+	err = callGet("geo.gettoptracks", api.params, args, &result, P{
+		"plain": []string{"country", "location", "limit", "page"},
 	})
 	return
 }

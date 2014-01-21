@@ -1,89 +1,92 @@
 package lastfm
 
 type albumApi struct {
-	creds *credentials
+	params *apiParams
 }
 
 //album.addTags
-func (api albumApi) AddTags(args P) (err error) {
+func (api albumApi) AddTags(args map[string]interface{}) (err error) {
 	defer func() { appendCaller(err, "lastfm.Album.AddTags") }()
-	err = callPost("album.addtags", api.creds, args, nil, P{
-		"normal": []string{"artist", "album", "tags"},
+	err = callPost("album.addtags", api.params, args, nil, P{
+		"plain": []string{"artist", "album", "tags"},
 	})
 	return
 }
 
 //album.getBuylinks
-func (api albumApi) GetBuyLinks(args P) (result AlbumGetBuyLinks, err error) {
+func (api albumApi) GetBuyLinks(args map[string]interface{}) (result AlbumGetBuyLinks, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.GetBuyLinks") }()
-	err = callGet("album.getbuylinks", api.creds, args, &result, P{
-		"normal": []string{"artist", "album", "mbid", "autocorrect", "country"},
+	err = callGet("album.getbuylinks", api.params, args, &result, P{
+		"plain": []string{"artist", "album", "mbid", "autocorrect", "country"},
 	})
 	return
 }
 
 //album.getInfo
-func (api albumApi) GetInfo(args P) (result AlbumGetInfo, err error) {
+func (api albumApi) GetInfo(args map[string]interface{}) (result AlbumGetInfo, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.GetInfo") }()
-	err = callGet("album.getinfo", api.creds, args, &result, P{
-		"normal": []string{"artist", "album", "mbid", "autocorrect", "username", "lang"},
+	err = callGet("album.getinfo", api.params, args, &result, P{
+		"plain": []string{"artist", "album", "mbid", "autocorrect", "username", "lang"},
 	})
 	return
 }
 
 //album.getShouts
-func (api albumApi) GetShouts(args P) (result AlbumGetShouts, err error) {
+func (api albumApi) GetShouts(args map[string]interface{}) (result AlbumGetShouts, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.GetShouts") }()
-	err = callGet("album.getshouts", api.creds, args, &result, P{
-		"normal": []string{"artist", "album", "mbid", "limit", "autocorrect", "page"},
+	err = callGet("album.getshouts", api.params, args, &result, P{
+		"plain": []string{"artist", "album", "mbid", "limit", "autocorrect", "page"},
 	})
 	return
 }
 
 //album.getTags
-func (api albumApi) GetTags(args P) (result AlbumGetTags, err error) {
+func (api albumApi) GetTags(args map[string]interface{}) (result AlbumGetTags, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.GetTags") }()
-	if _, ok := args["user"]; !ok {
-		args["user"] = api.creds.username
+	if _, ok := args["user"]; !ok && api.params.sk != "" {
+		err = callPost("album.gettags", api.params, args, &result, P{
+			"plain": []string{"artist", "album", "mbid", "autocorrect"},
+		})
+	} else {
+		err = callGet("album.gettags", api.params, args, &result, P{
+			"plain": []string{"artist", "album", "mbid", "autocorrect", "user"},
+		})
 	}
-	err = callGet("album.gettags", api.creds, args, &result, P{
-		"normal": []string{"artist", "album", "mbid", "autocorrect", "user"},
-	})
 	return
 }
 
 //album.getTopTags
-func (api albumApi) GetTopTags(args P) (result AlbumGetTopTags, err error) {
+func (api albumApi) GetTopTags(args map[string]interface{}) (result AlbumGetTopTags, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.GetTopTags") }()
-	err = callGet("album.gettoptags", api.creds, args, &result, P{
-		"normal": []string{"artist", "album", "autocorrect", "mbid"},
+	err = callGet("album.gettoptags", api.params, args, &result, P{
+		"plain": []string{"artist", "album", "autocorrect", "mbid"},
 	})
 	return
 }
 
 //album.removeTag
-func (api albumApi) RemoveTag(args P) (err error) {
+func (api albumApi) RemoveTag(args map[string]interface{}) (err error) {
 	defer func() { appendCaller(err, "lastfm.Album.RemoveTag") }()
-	err = callPost("album.removetag", api.creds, args, nil, P{
-		"normal": []string{"artist", "album", "tag"},
+	err = callPost("album.removetag", api.params, args, nil, P{
+		"plain": []string{"artist", "album", "tag"},
 	})
 	return
 }
 
 //album.search
-func (api albumApi) Search(args P) (result AlbumSearch, err error) {
+func (api albumApi) Search(args map[string]interface{}) (result AlbumSearch, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.Search") }()
-	err = callGet("album.search", api.creds, args, &result, P{
-		"normal": []string{"limit", "page", "album"},
+	err = callGet("album.search", api.params, args, &result, P{
+		"plain": []string{"limit", "page", "album"},
 	})
 	return
 }
 
 //album.share
-func (api albumApi) Share(args P) (err error) {
+func (api albumApi) Share(args map[string]interface{}) (err error) {
 	defer func() { appendCaller(err, "lastfm.Album.Share") }()
-	err = callPost("album.share", api.creds, args, nil, P{
-		"normal": []string{"artist", "album", "public", "message", "recipient"},
+	err = callPost("album.share", api.params, args, nil, P{
+		"plain": []string{"artist", "album", "public", "message", "recipient"},
 	})
 	return
 }

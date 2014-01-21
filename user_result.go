@@ -184,18 +184,18 @@ type UserGetFriends struct {
 
 //user.getInfo
 type UserGetInfo struct {
-	Id         string `xml:"id"`
-	Name       string `xml:"name"`
-	RealName   string `xml:"realname"`
-	Url        string `xml:"url"`
-	Image      string `xml:"image"`
-	Country    string `xml:"country"`
+	XMLName    xml.Name    `xml:"user"`
+	Id         string      `xml:"id"`
+	Name       string      `xml:"name"`
+	RealName   string      `xml:"realname"`
+	Url        string      `xml:"url"`
+	Country    string      `xml:"country"`
 	Age        string `xml:"age"`
-	Gender     string `xml:"gender"`
-	Subscriber string `xml:"subscriber"`
-	PlayCount  string `xml:"playcount"`
-	Playlists  string `xml:"playlists"`
-	Bootstrap  string `xml:"bootstrap"` // ?
+	Gender     string      `xml:"gender"`
+	Subscriber string      `xml:"subscriber"`
+	PlayCount  string      `xml:"playcount"`
+	Playlists  string      `xml:"playlists"`
+	Bootstrap  string      `xml:"bootstrap"`
 	Registered struct {
 		Unixtime string `xml:"unixtime,attr"`
 		Time     string `xml:",chardata"`
@@ -241,9 +241,9 @@ type UserGetLovedTracks struct {
 
 //user.getNeighbours
 type UserGetNeighbours struct {
-	XMLName    xml.Name `xml:"neighbours"`
-	User       string   `xml:"user,attr"`
-	Neighbours []struct {
+	XMLName xml.Name `xml:"neighbours"`
+	User    string   `xml:"user,attr"`
+	Users   []struct {
 		Name     string `xml:"name"`
 		RealName string `xml:"realname"`
 		Images   []struct {
@@ -571,13 +571,13 @@ type UserGetTopArtists struct {
 	PerPage    string   `xml:"perPage,attr"`
 	TotalPages string   `xml:"totalPages,attr"`
 	Artists    []struct {
-		Rank      string `xml:"rank,attr"`
-		Name      string `xml:"name"`
-		PlayCount string `xml:"playcount"`
-		Mbid      string `xml:"mbid"`
-		Url       string `xml:"url"`
-        Streamable string `xml:"streamable"`
-		Images []struct {
+		Rank       string `xml:"rank,attr"`
+		Name       string `xml:"name"`
+		PlayCount  string `xml:"playcount"`
+		Mbid       string `xml:"mbid"`
+		Url        string `xml:"url"`
+		Streamable string `xml:"streamable"`
+		Images     []struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
@@ -586,108 +586,108 @@ type UserGetTopArtists struct {
 
 //user.getTopTags
 type UserGetTopTags struct {
-    XMLName xml.Name `xml:"toptags"`
-    User string `xml:"user,attr"`
-    Tags []struct {
-        Name string `xml:"name"`
-        Count string `xml:"count"`
-        Url string `xml:"url"`
-    } `xml:"tag"`
+	XMLName xml.Name `xml:"toptags"`
+	User    string   `xml:"user,attr"`
+	Tags    []struct {
+		Name  string `xml:"name"`
+		Count string `xml:"count"`
+		Url   string `xml:"url"`
+	} `xml:"tag"`
 }
 
 //user.getTopTracks
 type UserGetTopTracks struct {
-    XMLName xml.Name `xml:"toptracks"`
+	XMLName    xml.Name `xml:"toptracks"`
 	User       string   `xml:"user,attr"`
 	Type       string   `xml:"type,attr"`
 	Total      string   `xml:"total,attr"`
 	Page       string   `xml:"page,attr"`
 	PerPage    string   `xml:"perPage,attr"`
 	TotalPages string   `xml:"totalPages,attr"`
-    Tracks []struct {
-        Rank string `xml:"rank,attr"`
-        Name string `xml:"name"`
-        Duration string `xml:"duration"`
-        PlayCount string `xml:"playcount"`
-        Mbid string `xml:"mbid"`
-        Url string `xml:"url"`
+	Tracks     []struct {
+		Rank       string `xml:"rank,attr"`
+		Name       string `xml:"name"`
+		Duration   string `xml:"duration"`
+		PlayCount  string `xml:"playcount"`
+		Mbid       string `xml:"mbid"`
+		Url        string `xml:"url"`
 		Streamable struct {
 			FullTrack  string `xml:"fulltrack,attr"`
 			Streamable string `xml:",chardata"`
 		} `xml:"streamable"`
-        Artist struct {
-            Name string `xml:"name"`
-            Mbid string `xml:"mbid"`
-            Url string `xml:"url"`
-        } `xml:"artist"`
+		Artist struct {
+			Name string `xml:"name"`
+			Mbid string `xml:"mbid"`
+			Url  string `xml:"url"`
+		} `xml:"artist"`
 		Images []struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-    } `xml:"track"`
+	} `xml:"track"`
 }
 
 //user.getWeeklyAlbumChart
 type UserGetWeeklyAlbumChart struct {
-    XMLName xml.Name `xml:"weeklyalbumchart"`
-    User string `xml:"user,attr"`
-    From string `xml:"from,attr"`
-    To string `xml:"to,attr"`
-    Albums []struct {
-        Rank string `xml:"rank,attr"`
-        Name string `xml:"name"`
-        Mbid string `xml:"mbid"`
-        PlayCount string `xml:"playcount"`
-        Url string `xml:"url"`
-    } `xml:"album"`
+	XMLName xml.Name `xml:"weeklyalbumchart"`
+	User    string   `xml:"user,attr"`
+	From    string   `xml:"from,attr"`
+	To      string   `xml:"to,attr"`
+	Albums  []struct {
+		Rank      string `xml:"rank,attr"`
+		Name      string `xml:"name"`
+		Mbid      string `xml:"mbid"`
+		PlayCount string `xml:"playcount"`
+		Url       string `xml:"url"`
+	} `xml:"album"`
 }
 
 //user.getWeeklyArtistChart
 type UserGetWeeklyArtistChart struct {
-    XMLName xml.Name `xml:"weeklyartistchart"`
-    User string `xml:"user,attr"`
-    From string `xml:"from,attr"`
-    To string `xml:"to,attr"`
-    Artists []struct {
-        Rank string `xml:"rank,attr"`
-        Name string `xml:"name"`
-        Mbid string `xml:"mbid"`
-        PlayCount string `xml:"playcount"`
-        Url string `xml:"url"`
-    } `xml:"artist"`
+	XMLName xml.Name `xml:"weeklyartistchart"`
+	User    string   `xml:"user,attr"`
+	From    string   `xml:"from,attr"`
+	To      string   `xml:"to,attr"`
+	Artists []struct {
+		Rank      string `xml:"rank,attr"`
+		Name      string `xml:"name"`
+		Mbid      string `xml:"mbid"`
+		PlayCount string `xml:"playcount"`
+		Url       string `xml:"url"`
+	} `xml:"artist"`
 }
 
 //user.getWeeklyChartList
 type UserGetWeeklyChartList struct {
-    XMLName xml.Name `xml:"weeklychartlist"`
-    User string `xml:"user,attr"`
-    Charts []struct {
-        From string `xml:"from,attr"`
-        To string `xml:"to,attr"`
-    } `xml:"chart"`
+	XMLName xml.Name `xml:"weeklychartlist"`
+	User    string   `xml:"user,attr"`
+	Charts  []struct {
+		From string `xml:"from,attr"`
+		To   string `xml:"to,attr"`
+	} `xml:"chart"`
 }
 
 //user.getWeeklyTrackChart
 type UserGetWeeklyTrackChart struct {
-    XMLName xml.Name `xml:"weeklytrackchart"`
-    User string `xml:"user,attr"`
-    From string `xml:"from,attr"`
-    To string `xml:"to,attr"`
-    Tracks []struct {
-        Rank string `xml:"rank,attr"`
-        Artist struct {
-            Name string `xml:",chardata"`
-            Mbid string `xml:"mbid,attr"`
-        } `xml:"artist"`
-        Name string `xml:"name"`
-        Mbid string `xml:"mbid"`
-        PlayCount string `xml:"playcount"`
-		Images []struct {
+	XMLName xml.Name `xml:"weeklytrackchart"`
+	User    string   `xml:"user,attr"`
+	From    string   `xml:"from,attr"`
+	To      string   `xml:"to,attr"`
+	Tracks  []struct {
+		Rank   string `xml:"rank,attr"`
+		Artist struct {
+			Name string `xml:",chardata"`
+			Mbid string `xml:"mbid,attr"`
+		} `xml:"artist"`
+		Name      string `xml:"name"`
+		Mbid      string `xml:"mbid"`
+		PlayCount string `xml:"playcount"`
+		Images    []struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-        Url string `xml:"url"`
-    } `xml:"track"`
+		Url string `xml:"url"`
+	} `xml:"track"`
 }
 
 //user.shout

@@ -2,6 +2,7 @@ package lastfm
 
 import "encoding/xml"
 
+//radio.getPlaylist
 type RadioGetPlaylist struct {
 	XMLName xml.Name `xml:"playlist"`
 	Version int      `xml:"version,attr"`
@@ -30,4 +31,22 @@ type RadioGetPlaylist struct {
 			FreeTrackUrl string `xml:"freeTrackUrl"`
 		} `xml:"extension"`
 	} `xml:"tracklist"`
+}
+
+//radio.search
+type RadioSearch struct {
+    XMLName xml.Name `xml:"stations"`
+    Station struct {
+        Name string `xml:"name"`
+        Url string `xml:"url"`
+    } `xml:"station"`
+}
+
+//radio.tune
+type RadioTune struct {
+    XMLName xml.Name `xml:"station"`
+    Type string `xml:"type"`
+    Name string `xml:"name"`
+    Url string `xml:"url"`
+    SupportsDiscovery string `xml:"supportsdiscovery"`
 }

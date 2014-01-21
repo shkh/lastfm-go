@@ -9,55 +9,66 @@ const (
 type P map[string]interface{}
 
 type Api struct {
-	creds       *credentials
+	params      *apiParams
 	Album       *albumApi
 	Artist      *artistApi
+	Chart       *chartApi
 	Event       *eventApi
 	Geo         *geoApi
 	Group       *groupApi
 	Library     *libraryApi
+	Playlist    *playlistApi
+	Radio       *radioApi
+	Tag         *tagApi
 	Tasteometer *tasteometerApi
 	Track       *trackApi
 	User        *userApi
 	Venue       *venueApi
 }
 
-type credentials struct {
-	apikey   string
-	secret   string
-	username string
-	sk       string
+type apiParams struct {
+	apikey    string
+	secret    string
+	sk        string
+	useragent string
 }
 
 func New(key, secret string) (api *Api) {
-	c := credentials{key, secret, "", ""}
+	params := apiParams{key, secret, "", ""}
 	api = &Api{
-		creds:       &c,
-		Album:       &albumApi{&c},
-		Artist:      &artistApi{&c},
-		Event:       &eventApi{&c},
-		Geo:         &geoApi{&c},
-		Group:       &groupApi{&c},
-		Library:     &libraryApi{&c},
-		Track:       &trackApi{&c},
-		Tasteometer: &tasteometerApi{&c},
-		User:        &userApi{&c},
-		Venue:       &venueApi{&c},
+		params:      &params,
+		Album:       &albumApi{&params},
+		Artist:      &artistApi{&params},
+		Chart:       &chartApi{&params},
+		Event:       &eventApi{&params},
+		Geo:         &geoApi{&params},
+		Group:       &groupApi{&params},
+		Library:     &libraryApi{&params},
+		Playlist:    &playlistApi{&params},
+		Radio:       &radioApi{&params},
+		Tasteometer: &tasteometerApi{&params},
+		Track:       &trackApi{&params},
+		User:        &userApi{&params},
+		Venue:       &venueApi{&params},
 	}
 	return
 }
 
-func (api *Api) SetSession(username, sessionkey string) {
-	api.creds.username = username
-	api.creds.sk = sessionkey
+func (api *Api) SetSession(sessionkey string) {
+	api.params.sk = sessionkey
 }
 
 func (api Api) GetSessionKey() (sk string) {
-	sk = api.creds.sk
+	sk = api.params.sk
 	return
 }
 
-func (api Api) GetUserName() (username string) {
-	username = api.creds.username
-	return
+//func (api Api) GetUserName() (username string) {
+	//username = api.params.username
+	//return
+//}
+
+func (api *Api) SetUserAgent(useragent string) {
+	api.params.useragent = useragent
 }
+

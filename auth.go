@@ -10,13 +10,13 @@ func (api *Api) Login(username, password string) (err error) {
 
 	var result AuthGetMobileSession
 	args := P{"username": username, "password": password}
-	if err = callPostWithoutSession("auth.getmobilesession", api.creds, args, &result, P{
-		"normal": []string{"username", "password"},
+	if err = callPostWithoutSession("auth.getmobilesession", api.params, args, &result, P{
+		"plain": []string{"username", "password"},
 	}); err != nil {
 		return
 	}
-	api.creds.sk = result.Key
-	api.creds.username = result.Name
+	api.params.sk = result.Key
+	//api.creds.username = result.Name
 	return
 }
 
@@ -25,7 +25,7 @@ func (api Api) GetToken() (token string, err error) {
 	defer func() { appendCaller(err, "lastfm.GetToken") }()
 
 	var result AuthGetToken
-	if err = callGet("auth.gettoken", api.creds, nil, &result, P{}); err != nil {
+	if err = callGet("auth.gettoken", api.params, nil, &result, P{}); err != nil {
 		return
 	}
 	token = result.Token
@@ -34,7 +34,7 @@ func (api Api) GetToken() (token string, err error) {
 
 func (api Api) GetAuthTokenUrl(token string) (uri string) {
 	urlParams := url.Values{}
-	urlParams.Add("api_key", api.creds.apikey)
+	urlParams.Add("api_key", api.params.apikey)
 	urlParams.Add("token", token)
 	uri = constructUrl(UriBrowserBase, urlParams)
 	return
@@ -43,7 +43,7 @@ func (api Api) GetAuthTokenUrl(token string) (uri string) {
 //Web app style
 func (api Api) GetAuthRequestUrl(callback string) (uri string) {
 	urlParams := url.Values{}
-	urlParams.Add("api_key", api.creds.apikey)
+	urlParams.Add("api_key", api.params.apikey)
 	if callback != "" {
 		urlParams.Add("cb", callback)
 	}
@@ -57,10 +57,10 @@ func (api *Api) LoginWithToken(token string) (err error) {
 
 	var result AuthGetSession
 	args := P{"token": token}
-    if err = callPostWithoutSession("auth.getsession", api.creds, args, &result, P{"normal": []string{"token"}}); err != nil {
+	if err = callPostWithoutSession("auth.getsession", api.params, args, &result, P{"plain": []string{"token"}}); err != nil {
 		return
 	}
-	api.creds.sk = result.Key
-	api.creds.username = result.Name
+	api.params.sk = result.Key
+	//api.params.username = result.Name
 	return
 }

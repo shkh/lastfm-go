@@ -1,32 +1,32 @@
 package lastfm
 
 type venueApi struct {
-	creds *credentials
+    params *apiParams
 }
 
 //venue.getEvents
-func (api venueApi) GetEvents(args P) (result VenueGetEvents, err error) {
+func (api venueApi) GetEvents(args map[string]interface{}) (result VenueGetEvents, err error) {
 	defer func() { appendCaller(err, "lastfm.Venue.GetEvents") }()
-	err = callGet("venue.getevents", api.creds, args, &result, P{
-		"normal": []string{"venue", "festivalsonly"},
+	err = callGet("venue.getevents", api.params, args, &result, P{
+		"plain": []string{"venue", "festivalsonly"},
 	})
 	return
 }
 
 //venue.getPastEvents
-func (api venueApi) GetPastEvents(args P) (result VenueGetPastEvents, err error) {
+func (api venueApi) GetPastEvents(args map[string]interface{}) (result VenueGetPastEvents, err error) {
 	defer func() { appendCaller(err, "lastfm.Venue.GetPastEvents") }()
-	err = callGet("venue.getpastevents", api.creds, args, &result, P{
-		"normal": []string{"venue", "festivalsonly", "page", "limit"},
+	err = callGet("venue.getpastevents", api.params, args, &result, P{
+		"plain": []string{"venue", "festivalsonly", "page", "limit"},
 	})
 	return
 }
 
 //venue.search
-func (api venueApi) Search(args P) (result VenueSearch, err error) {
+func (api venueApi) Search(args map[string]interface{}) (result VenueSearch, err error) {
 	defer func() { appendCaller(err, "lastfm.Venue.Search") }()
-	err = callGet("venue.search", api.creds, args, &result, P{
-		"normal": []string{"venue", "page", "limit", "country"},
+	err = callGet("venue.search", api.params, args, &result, P{
+		"plain": []string{"venue", "page", "limit", "country"},
 	})
 	return
 }
