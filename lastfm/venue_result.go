@@ -123,11 +123,11 @@ type VenueSearch struct {
 	Query      struct {
 		Role        string `xml:"role,attr"`
 		SearchTerms string `xml:"searchTrems,attr"`
-		StartPage   string `xml:"startPage,attr"`
+		StartPage   int    `xml:"startPage,attr"`
 	} `xml:"Query"`
-	TotalResults string `xml:"totalResults"`
-	StartIndex   string `xml:"startIndex"`
-	ItemsPerPage string `xml:"itemsPerPage"`
+	TotalResults int `xml:"totalResults"`
+	StartIndex   int `xml:"startIndex"`
+	ItemsPerPage int `xml:"itemsPerPage"`
 	Venues       []struct {
 		Id       string `xml:"id"`
 		Name     string `xml:"name"`

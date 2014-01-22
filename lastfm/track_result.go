@@ -246,11 +246,11 @@ type TrackSearch struct {
 	Query      struct {
 		Role        string `xml:"role,attr"`
 		SearchTerms string `xml:"searchTrems,attr"`
-		StartPage   string `xml:"startPage,attr"`
+		StartPage   int    `xml:"startPage,attr"`
 	} `xml:"Query"`
-	TotalResults string `xml:"totalResults"`
-	StartIndex   string `xml:"startIndex"`
-	ItemsPerPage string `xml:"itemsPerPage"`
+	TotalResults int `xml:"totalResults"`
+	StartIndex   int `xml:"startIndex"`
+	ItemsPerPage int `xml:"itemsPerPage"`
 	Tracks       []struct {
 		Name       string `xml:"name"`
 		Mbid       string `xml:"mbid"`
