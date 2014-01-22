@@ -1,2 +1,2 @@
 *.test
-creds.json
+examples/creds.json
