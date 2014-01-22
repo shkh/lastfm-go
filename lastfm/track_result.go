@@ -17,7 +17,7 @@ type TrackGetBuylinks struct {
 			Amount    string `xml:"amount"`
 			Formatted string `xml:"formatted"`
 		} `xml:"price"`
-		BuyLink  string `xml:"buylink"`
+		Buylink  string `xml:"buylink"`
 		IsSearch string `xml:"isSearch"`
 	} `xml:"physicals>affiliation"`
 	Downloads []struct {
@@ -28,7 +28,7 @@ type TrackGetBuylinks struct {
 			Amount    string `xml:"amount"`
 			Formatted string `xml:"formatted"`
 		} `xml:"price"`
-		BuyLink  string `xml:"buylink"`
+		Buylink  string `xml:"buylink"`
 		IsSearch string `xml:"isSearch"`
 	} `xml:"downloads>affiliation"`
 }

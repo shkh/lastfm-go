@@ -14,8 +14,8 @@ func (api albumApi) AddTags(args map[string]interface{}) (err error) {
 }
 
 //album.getBuylinks
-func (api albumApi) GetBuyLinks(args map[string]interface{}) (result AlbumGetBuyLinks, err error) {
-	defer func() { appendCaller(err, "lastfm.Album.GetBuyLinks") }()
+func (api albumApi) GetBuylinks(args map[string]interface{}) (result AlbumGetBuylinks, err error) {
+	defer func() { appendCaller(err, "lastfm.Album.GetBuylinks") }()
 	err = callGet("album.getbuylinks", api.params, args, &result, P{
 		"plain": []string{"artist", "album", "mbid", "autocorrect", "country"},
 	})

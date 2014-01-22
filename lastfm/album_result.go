@@ -5,7 +5,7 @@ import "encoding/xml"
 //album.addTags (empty)
 
 //album.getBuylinks
-type AlbumGetBuyLinks struct {
+type AlbumGetBuylinks struct {
 	XMLName   xml.Name `xml:"affiliations"`
 	Physicals []struct {
 		SupplierName string `xml:"supplierName"`
@@ -15,7 +15,7 @@ type AlbumGetBuyLinks struct {
 			Amount    string `xml:"amount"`
 			Formatted string `xml:"formatted"`
 		} `xml:"price"`
-		BuyLink  string `xml:"buylink"`
+		Buylink  string `xml:"buylink"`
 		IsSearch string `xml:"isSearch"`
 	} `xml:"physicals>affiliation"`
 	Downloads []struct {
@@ -26,7 +26,7 @@ type AlbumGetBuyLinks struct {
 			Amount    string `xml:"amount"`
 			Formatted string `xml:"formatted"`
 		} `xml:"price"`
-		BuyLink  string `xml:"buylink"`
+		Buylink  string `xml:"buylink"`
 		IsSearch string `xml:"isSearch"`
 	} `xml:"downloads>affiliation"`
 }
@@ -78,10 +78,10 @@ type AlbumGetShouts struct {
 	XMLName    xml.Name `xml:"shouts"`
 	Artist     string   `xml:"artist,attr"`
 	Album      string   `xml:"album,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages"`
 	Shouts     []struct {
 		Body   string `xml:"body"`
 		Author string `xml:"author"`
