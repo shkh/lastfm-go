@@ -2,6 +2,8 @@ package lastfm
 
 import "encoding/xml"
 
+//playlist.addTrack (empty)
+
 //playlist.create
 type PlaylistCreate struct {
 	XMLName  xml.Name `xml:"playlists"`
