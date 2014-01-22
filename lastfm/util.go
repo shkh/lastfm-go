@@ -253,7 +253,6 @@ func callGet(apiMethod string, params *apiParams, args map[string]interface{}, r
 //////////////
 // POST API //
 //////////////
-
 func callPost(apiMethod string, params *apiParams, args P, result interface{}, rules P) (err error) {
 	if err = requireAuth(params); err != nil {
 		return
