@@ -1,7 +1,7 @@
 package lastfm
 
 type chartApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //chart.getHypedArtists

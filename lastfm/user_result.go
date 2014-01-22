@@ -184,18 +184,18 @@ type UserGetFriends struct {
 
 //user.getInfo
 type UserGetInfo struct {
-	XMLName    xml.Name    `xml:"user"`
-	Id         string      `xml:"id"`
-	Name       string      `xml:"name"`
-	RealName   string      `xml:"realname"`
-	Url        string      `xml:"url"`
-	Country    string      `xml:"country"`
-	Age        string `xml:"age"`
-	Gender     string      `xml:"gender"`
-	Subscriber string      `xml:"subscriber"`
-	PlayCount  string      `xml:"playcount"`
-	Playlists  string      `xml:"playlists"`
-	Bootstrap  string      `xml:"bootstrap"`
+	XMLName    xml.Name `xml:"user"`
+	Id         string   `xml:"id"`
+	Name       string   `xml:"name"`
+	RealName   string   `xml:"realname"`
+	Url        string   `xml:"url"`
+	Country    string   `xml:"country"`
+	Age        string   `xml:"age"`
+	Gender     string   `xml:"gender"`
+	Subscriber string   `xml:"subscriber"`
+	PlayCount  string   `xml:"playcount"`
+	Playlists  string   `xml:"playlists"`
+	Bootstrap  string   `xml:"bootstrap"`
 	Registered struct {
 		Unixtime string `xml:"unixtime,attr"`
 		Time     string `xml:",chardata"`

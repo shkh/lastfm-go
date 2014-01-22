@@ -3,7 +3,7 @@ package lastfm
 const (
 	UriApiSecBase  = "https://ws.audioscrobbler.com/2.0/"
 	UriApiBase     = "http://ws.audioscrobbler.com/2.0/"
-	UriBrowserBase = "http://www.last.fm/api/auth/"
+	UriBrowserBase = "https://www.last.fm/api/auth/"
 )
 
 type P map[string]interface{}
@@ -63,12 +63,6 @@ func (api Api) GetSessionKey() (sk string) {
 	return
 }
 
-//func (api Api) GetUserName() (username string) {
-	//username = api.params.username
-	//return
-//}
-
 func (api *Api) SetUserAgent(useragent string) {
 	api.params.useragent = useragent
 }
-

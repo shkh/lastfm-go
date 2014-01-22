@@ -12,4 +12,3 @@ type ApiError struct {
 	Code    int    `xml:"code,attr"`
 	Message string `xml:",chardata"`
 }
-

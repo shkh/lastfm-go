@@ -4,7 +4,7 @@ import "encoding/xml"
 
 //tasteometer.compare
 type TasteometerCompare struct {
-    XMLName xml.Name `xml:"comparison"`
+	XMLName xml.Name `xml:"comparison"`
 	Result  struct {
 		Score   string `xml:"score"`
 		Artists struct {

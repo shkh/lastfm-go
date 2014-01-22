@@ -6,8 +6,8 @@ import (
 
 func compareMap(from, to map[string]string) (result bool) {
 	result = true
-    for key, val1 := range from {
-        if val2, ok := to[key]; !ok || val1 != val2 {
+	for key, val1 := range from {
+		if val2, ok := to[key]; !ok || val1 != val2 {
 			result = false
 			break
 		}
@@ -44,7 +44,7 @@ func TestFormatArgs(t *testing.T) {
 		{
 			P{"artist": []string{"a0", "a1", "a2"}, "recipient": []string{"r0", "r1", "r2"}},
 			P{"indexing": []string{"artist"}, "normal": []string{"recipient"}},
-            map[string]string{"artist[0]": "a0", "artist[1]": "a1", "artist[2]": "a2", "recipient": "r0,r1,r2"},
+			map[string]string{"artist[0]": "a0", "artist[1]": "a1", "artist[2]": "a2", "recipient": "r0,r1,r2"},
 		},
 		{
 			P{"tags": []string{"t0", "t1", "t2"}, "artist": []string{"a0", "a1"}, "id": 10, "name": "kumakichi"},
@@ -54,8 +54,8 @@ func TestFormatArgs(t *testing.T) {
 	}
 
 	for i, tt := range tests {
-        if result, _ := formatArgs (tt.in1, tt.in2); !compareMap(tt.out, result) {
-            t.Errorf("case %d", i+1)
+		if result, _ := formatArgs(tt.in1, tt.in2); !compareMap(tt.out, result) {
+			t.Errorf("case %d", i+1)
 			t.Fail()
 		}
 	}

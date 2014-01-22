@@ -1,7 +1,7 @@
 package lastfm
 
 type venueApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //venue.getEvents

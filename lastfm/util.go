@@ -120,7 +120,7 @@ func formatArgs(args, rules P) (result map[string]string, err error) {
 
 		for _, p := range rules["indexing"].([]string) {
 			if valI, ok := args[p]; ok {
-                switch valI.(type) {
+				switch valI.(type) {
 				case string:
 					key := p + "[0]"
 					val := valI.(string)
@@ -129,10 +129,10 @@ func formatArgs(args, rules P) (result map[string]string, err error) {
 					key := p + "[0]"
 					val := strconv.Itoa(valI.(int))
 					result[key] = val
-                case int64: //timestamp
-                    key := p + "[0]"
-                    val := strconv.FormatInt (valI.(int64), 10)
-                    result[key] = val
+				case int64: //timestamp
+					key := p + "[0]"
+					val := strconv.FormatInt(valI.(int64), 10)
+					result[key] = val
 				case []string: //with indeces
 					for i, val := range valI.([]string) {
 						key := fmt.Sprintf("%s[%d]", p, i)
@@ -155,8 +155,8 @@ func formatArgs(args, rules P) (result map[string]string, err error) {
 							val = valI.(string)
 						case int:
 							val = strconv.Itoa(valI.(int))
-                        case int64:
-                            val = strconv.FormatInt (valI.(int64), 10)
+						case int64:
+							val = strconv.FormatInt(valI.(int64), 10)
 						default:
 							err = newLibError(
 								ErrorInvalidTypeOfArgument,
@@ -186,8 +186,8 @@ func formatArgs(args, rules P) (result map[string]string, err error) {
 					val = valI.(string)
 				case int:
 					val = strconv.Itoa(valI.(int))
-                case int64:
-                    val = strconv.FormatInt (valI.(int64), 10)
+				case int64:
+					val = strconv.FormatInt(valI.(int64), 10)
 				case []string: //comma delimited
 					ss := valI.([]string)
 					if len(ss) > 10 {
@@ -227,18 +227,18 @@ func callGet(apiMethod string, params *apiParams, args map[string]interface{}, r
 		urlParams.Add(k, v)
 	}
 
-	uri := constructUrl(UriApiBase, urlParams)
+	uri := constructUrl(UriApiSecBase, urlParams)
 
-    client := &http.Client {}
-    req, err := http.NewRequest ("GET", uri, nil)
-    if err != nil {
-        return
-    }
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", uri, nil)
+	if err != nil {
+		return
+	}
 	if params.useragent != "" {
 		req.Header.Set("User-Agent", params.useragent)
 	}
 
-    res, err := client.Do (req)
+	res, err := client.Do(req)
 	if err != nil {
 		return
 	}
@@ -258,7 +258,7 @@ func callPost(apiMethod string, params *apiParams, args P, result interface{}, r
 	if err = requireAuth(params); err != nil {
 		return
 	}
-    
+
 	urlParams := url.Values{}
 	urlParams.Add("method", apiMethod)
 	uri := constructUrl(UriApiSecBase, urlParams)
@@ -282,14 +282,13 @@ func callPost(apiMethod string, params *apiParams, args P, result interface{}, r
 
 	sig := getSignature(tmp, params.secret)
 	postData.Add("api_sig", sig)
-    fmt.Println (postData)
 
 	client := &http.Client{}
-	req, err := http.NewRequest("POST", uri, strings.NewReader (postData.Encode ()))
+	req, err := http.NewRequest("POST", uri, strings.NewReader(postData.Encode()))
 	if err != nil {
 		return
 	}
-    req.Header.Set ("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	if params.useragent != "" {
 		req.Header.Set("User-Agent", params.useragent)
 	}

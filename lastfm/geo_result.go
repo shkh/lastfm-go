@@ -259,8 +259,8 @@ type GeoGetTopArtists struct {
 
 //geo.getTopTracks
 type GeoGetTopTracks struct {
-    XMLName xml.Name `xml:"toptracks"`
-    Country string `xml:"country"`
+	XMLName    xml.Name `xml:"toptracks"`
+	Country    string   `xml:"country"`
 	Total      string   `xml:"total,attr"`
 	Page       string   `xml:"page,attr"`
 	PerPage    string   `xml:"perPage,attr"`

@@ -59,17 +59,17 @@ type VenueGetEvents struct {
 
 //venue.getPastEvents
 type VenueGetPastEvents struct {
-    XMLName xml.Name `xml:"events"`
-    Geo string `xml:"geo,attr"`
-    Venue string `xml:"venue,attr"`
-    Url string `xml:"url,attr"`
-    VenueTimezone string `xml:"venuetimezone,attr"`
-    FestivalsOnly string `xml:"festivalsonly,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
-    Events []struct {
+	XMLName       xml.Name `xml:"events"`
+	Geo           string   `xml:"geo,attr"`
+	Venue         string   `xml:"venue,attr"`
+	Url           string   `xml:"url,attr"`
+	VenueTimezone string   `xml:"venuetimezone,attr"`
+	FestivalsOnly string   `xml:"festivalsonly,attr"`
+	Total         string   `xml:"total,attr"`
+	Page          string   `xml:"page,attr"`
+	PerPage       string   `xml:"perPage,attr"`
+	TotalPages    string   `xml:"totalPages,attr"`
+	Events        []struct {
 		Geo     string `xml:"geo,attr"`
 		Id      string `xml:"id"`
 		Title   string `xml:"title"`
@@ -104,14 +104,14 @@ type VenueGetPastEvents struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-		Attendance string `xml:"attendance"`
-		Reviews    string `xml:"reviews"`
-		Tag        string `xml:"tag"`
-		Url        string `xml:"url"`
-		Website    string `xml:"website"`
-		Canceled string   `xml:"canceled"`
-		Tags     []string `xml:"tags>tag"`
-    } `xml:"event"`
+		Attendance string   `xml:"attendance"`
+		Reviews    string   `xml:"reviews"`
+		Tag        string   `xml:"tag"`
+		Url        string   `xml:"url"`
+		Website    string   `xml:"website"`
+		Canceled   string   `xml:"canceled"`
+		Tags       []string `xml:"tags>tag"`
+	} `xml:"event"`
 }
 
 //venue.search
@@ -125,10 +125,10 @@ type VenueSearch struct {
 		SearchTerms string `xml:"searchTrems,attr"`
 		StartPage   string `xml:"startPage,attr"`
 	} `xml:"Query"`
-	TotalResults  string `xml:"totalResults"`
-	StartIndex    string `xml:"startIndex"`
-	ItemsPerPage  string `xml:"itemsPerPage"`
-	Venues []struct {
+	TotalResults string `xml:"totalResults"`
+	StartIndex   string `xml:"startIndex"`
+	ItemsPerPage string `xml:"itemsPerPage"`
+	Venues       []struct {
 		Id       string `xml:"id"`
 		Name     string `xml:"name"`
 		Location struct {

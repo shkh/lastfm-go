@@ -79,7 +79,7 @@ func (api trackApi) GetSimilar(args map[string]interface{}) (result TrackGetSimi
 //track.getTags
 func (api trackApi) GetTags(args map[string]interface{}) (result TrackGetTags, err error) {
 	defer func() { appendCaller(err, "lastfm.Track.GetTags") }()
-    if _, ok := args["users"]; !ok && api.params.sk != "" {
+	if _, ok := args["users"]; !ok && api.params.sk != "" {
 		err = callPost("track.gettags", api.params, args, &result, P{
 			"plain": []string{"artist", "track", "mbid", "autocorrect"},
 		})

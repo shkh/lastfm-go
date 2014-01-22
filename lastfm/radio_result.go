@@ -35,18 +35,18 @@ type RadioGetPlaylist struct {
 
 //radio.search
 type RadioSearch struct {
-    XMLName xml.Name `xml:"stations"`
-    Station struct {
-        Name string `xml:"name"`
-        Url string `xml:"url"`
-    } `xml:"station"`
+	XMLName xml.Name `xml:"stations"`
+	Station struct {
+		Name string `xml:"name"`
+		Url  string `xml:"url"`
+	} `xml:"station"`
 }
 
 //radio.tune
 type RadioTune struct {
-    XMLName xml.Name `xml:"station"`
-    Type string `xml:"type"`
-    Name string `xml:"name"`
-    Url string `xml:"url"`
-    SupportsDiscovery string `xml:"supportsdiscovery"`
+	XMLName           xml.Name `xml:"station"`
+	Type              string   `xml:"type"`
+	Name              string   `xml:"name"`
+	Url               string   `xml:"url"`
+	SupportsDiscovery string   `xml:"supportsdiscovery"`
 }

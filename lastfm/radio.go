@@ -1,7 +1,7 @@
 package lastfm
 
 type radioApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //radio.getPlaylist (auth required)
@@ -14,7 +14,7 @@ func (api radioApi) GetPlaylist(args map[string]interface{}) (result RadioGetPla
 }
 
 //radio.search
-func (api radioApi) Search (args map[string]interface {}) (result RadioSearch, err error) {
+func (api radioApi) Search(args map[string]interface{}) (result RadioSearch, err error) {
 	defer func() { appendCaller(err, "lastfm.Radio.Search") }()
 	err = callGet("radio.search", api.params, args, &result, P{
 		"plain": []string{"name"},
@@ -23,7 +23,7 @@ func (api radioApi) Search (args map[string]interface {}) (result RadioSearch, e
 }
 
 //radio.tune
-func (api radioApi) Tune (args map[string]interface {}) (result RadioTune, err error) {
+func (api radioApi) Tune(args map[string]interface{}) (result RadioTune, err error) {
 	defer func() { appendCaller(err, "lastfm.Radio.Tune") }()
 	err = callPost("radio.tune", api.params, args, &result, P{
 		"plain": []string{"lang", "station"},

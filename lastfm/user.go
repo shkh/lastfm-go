@@ -1,7 +1,7 @@
 package lastfm
 
 type userApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //user.getArtistTracks
@@ -43,7 +43,7 @@ func (api userApi) GetFriends(args map[string]interface{}) (result UserGetFriend
 //user.getInfo
 func (api userApi) GetInfo(args map[string]interface{}) (result UserGetInfo, err error) {
 	defer func() { appendCaller(err, "lastfm.User.GetInfo") }()
-    if _, ok := args["user"]; !ok && api.params.sk != "" {
+	if _, ok := args["user"]; !ok && api.params.sk != "" {
 		err = callPost("user.getinfo", api.params, args, &result, P{})
 	} else {
 		err = callGet("user.getinfo", api.params, args, &result, P{

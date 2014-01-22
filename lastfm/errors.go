@@ -2,7 +2,7 @@ package lastfm
 
 import (
 	"fmt"
-    "reflect"
+	"reflect"
 	"strings"
 )
 
@@ -49,7 +49,7 @@ func newLibError(code int, message string) (e *LastfmError) {
 }
 
 func appendCaller(err error, caller string) {
-    if err != nil && reflect.TypeOf(err).String() == "*lastfm.LastfmError" {
-        err.(*LastfmError).Caller = caller
-    }
+	if err != nil && reflect.TypeOf(err).String() == "*lastfm.LastfmError" {
+		err.(*LastfmError).Caller = caller
+	}
 }

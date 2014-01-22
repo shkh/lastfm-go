@@ -13,23 +13,23 @@ type EventGetAttendees struct {
 	Page       string   `xml:"page,attr"`
 	PerPage    string   `xml:"perPage,attr"`
 	TotalPages string   `xml:"totalPages,attr"`
-    Attendees []struct {
-        Name string `xml:"name"`
-        RealName string `xml:"realname"`
+	Attendees  []struct {
+		Name     string `xml:"name"`
+		RealName string `xml:"realname"`
 		Url      string `xml:"url"`
 		Images   []struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-    } `xml:"user"`
+	} `xml:"user"`
 }
 
 //event.getInfo
 type EventGetInfo struct {
-    XMLName xml.Name `xml:"event"`
-	Geo     string `xml:"geo,attr"`
-	Id      string `xml:"id"`
-	Title   string `xml:"title"`
+	XMLName xml.Name `xml:"event"`
+	Geo     string   `xml:"geo,attr"`
+	Id      string   `xml:"id"`
+	Title   string   `xml:"title"`
 	Artists struct {
 		Headliner string   `xml:"headliner"`
 		Artists   []string `xml:"artist"`
@@ -61,8 +61,8 @@ type EventGetInfo struct {
 		Size string `xml:"size,attr"`
 		Url  string `xml:",chardata"`
 	} `xml:"image"`
-	Attendance string    `xml:"attendance"`
-	Reviews    string    `xml:"reviews"`
+	Attendance string `xml:"attendance"`
+	Reviews    string `xml:"reviews"`
 	Tag        string `xml:"tag"`
 	Url        string
 	Website    string `xml:"website"`
@@ -75,16 +75,16 @@ type EventGetInfo struct {
 
 //event.getShouts
 type EventGetShouts struct {
-    XMLName xml.Name `xml:"shouts"`
+	XMLName    xml.Name `xml:"shouts"`
 	Total      string   `xml:"total,attr"`
 	Page       string   `xml:"page,attr"`
 	PerPage    string   `xml:"perPage,attr"`
 	TotalPages string   `xml:"totalPages,attr"`
-    Shouts []struct {
-        Body string `xml:"body"`
-        Author string `xml:"author"`
-        Date string `xml:"date"`
-    } `xml:"shout"`
+	Shouts     []struct {
+		Body   string `xml:"body"`
+		Author string `xml:"author"`
+		Date   string `xml:"date"`
+	} `xml:"shout"`
 }
 
 //event.share

@@ -1,7 +1,7 @@
 package lastfm
 
 type libraryApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //library.addAlbum

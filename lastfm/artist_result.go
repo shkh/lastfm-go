@@ -348,7 +348,7 @@ type ArtistSearch struct {
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
 		Listeners string `xml:"listeners"`
-    } `xml:"artistmatches>artist"`
+	} `xml:"artistmatches>artist"`
 }
 
 //artist.share (empty)

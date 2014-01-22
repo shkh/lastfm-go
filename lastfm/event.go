@@ -1,7 +1,7 @@
 package lastfm
 
 type eventApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //Event.attend

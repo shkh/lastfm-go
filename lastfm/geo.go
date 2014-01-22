@@ -1,7 +1,7 @@
 package lastfm
 
 type geoApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //geo.getEvents

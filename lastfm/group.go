@@ -1,7 +1,7 @@
 package lastfm
 
 type groupApi struct {
-    params *apiParams
+	params *apiParams
 }
 
 //group.getHype
