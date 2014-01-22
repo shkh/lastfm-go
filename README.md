@@ -34,7 +34,7 @@ They can be found in `class_result.go`.
 Please look at the file to see which fileds are exported.
 		
 You can use `lastfm.P` for arguments. 
-It's just an alias to `map[string]interface{}`, but values must be `string`, `int` or `[]string`.
+It's just an alias to `map[string]interface{}`, but values must be `string`, `int`, `int64` (for unix timestamp) or `[]string`.
 Slice of string, []string, can be used for passing multiple values for a key.
 
 	//album.addTags (auth required)
