@@ -8,11 +8,11 @@ import "encoding/xml"
 type EventGetAttendees struct {
 	XMLName    xml.Name `xml:"attendees"`
 	Geo        string   `xml:"geo,attr"`
-	Event      string   `xml:"event"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Event      string   `xml:"event,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Attendees  []struct {
 		Name     string `xml:"name"`
 		RealName string `xml:"realname"`
@@ -76,10 +76,10 @@ type EventGetInfo struct {
 //event.getShouts
 type EventGetShouts struct {
 	XMLName    xml.Name `xml:"shouts"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Shouts     []struct {
 		Body   string `xml:"body"`
 		Author string `xml:"author"`

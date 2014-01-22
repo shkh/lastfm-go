@@ -81,7 +81,7 @@ type AlbumGetShouts struct {
 	Total      int      `xml:"total,attr"`
 	Page       int      `xml:"page,attr"`
 	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Shouts     []struct {
 		Body   string `xml:"body"`
 		Author string `xml:"author"`

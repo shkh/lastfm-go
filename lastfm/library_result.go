@@ -12,10 +12,10 @@ import "encoding/xml"
 type LibraryGetAlbums struct {
 	XMLName    xml.Name `xml:"albums"`
 	User       string   `xml:"user,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Albums     []struct {
 		Name      string `xml:"name"`
 		PlayCount string `xml:"playcount"`
@@ -38,10 +38,10 @@ type LibraryGetAlbums struct {
 type LibraryGetArtists struct {
 	XMLName    xml.Name `xml:"artists"`
 	User       string   `xml:"user,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Artists    []struct {
 		Name       string `xml:"name"`
 		PlayCount  string `xml:"playcount"`
@@ -60,10 +60,10 @@ type LibraryGetArtists struct {
 type LibraryGetTracks struct {
 	XMLName    xml.Name `xml:"tracks"`
 	User       string   `xml:"user,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		Name       string `xml:"name"`
 		Duration   string `xml:"duration"`

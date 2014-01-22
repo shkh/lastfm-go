@@ -65,10 +65,10 @@ type VenueGetPastEvents struct {
 	Url           string   `xml:"url,attr"`
 	VenueTimezone string   `xml:"venuetimezone,attr"`
 	FestivalsOnly string   `xml:"festivalsonly,attr"`
-	Total         string   `xml:"total,attr"`
-	Page          string   `xml:"page,attr"`
-	PerPage       string   `xml:"perPage,attr"`
-	TotalPages    string   `xml:"totalPages,attr"`
+	Total         int      `xml:"total,attr"`
+	Page          int      `xml:"page,attr"`
+	PerPage       int      `xml:"perPage,attr"`
+	TotalPages    int      `xml:"totalPages,attr"`
 	Events        []struct {
 		Geo     string `xml:"geo,attr"`
 		Id      string `xml:"id"`

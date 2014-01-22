@@ -32,10 +32,10 @@ type TagGetSimilar struct {
 type TagGetTopAlbums struct {
 	XMLName    xml.Name `xml:"topalbums"`
 	Tag        string   `xml:"tag,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Albums     []struct {
 		Rank   string `xml:"rank,attr"`
 		Name   string `xml:"name"`
@@ -86,10 +86,10 @@ type TagGetTopTags struct {
 type TagGetTopTracks struct {
 	XMLName    xml.Name `xml:"toptracks"`
 	Tag        string   `xml:"tag,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `xml:"name"`

@@ -9,10 +9,10 @@ type GeoGetEvents struct {
 	Location      string   `xml:"location,attr"`
 	Tag           string   `xml:"tag,attr"`
 	FestivalsOnly string   `xml:"festivalsonly,attr"`
-	Total         string   `xml:"total,attr"`
-	Page          string   `xml:"page,attr"`
-	PerPage       string   `xml:"perPage,attr"`
-	TotalPages    string   `xml:"totalPages,attr"`
+	Total         int      `xml:"total,attr"`
+	Page          int      `xml:"page,attr"`
+	PerPage       int      `xml:"perPage,attr"`
+	TotalPages    int      `xml:"totalPages,attr"`
 	Events        []struct {
 		Geo     string `xml:"geo,attr"`
 		Id      string `xml:"id"`
@@ -66,10 +66,10 @@ type GeoGetEvents struct {
 type GeoGetMetroArtistChart struct {
 	XMLName    xml.Name `xml:"topartists"`
 	Metro      string   `xml:"metro,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Artists    []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `Xml:"name"`
@@ -88,10 +88,10 @@ type GeoGetMetroArtistChart struct {
 type GeoGetMetroHypeArtistChart struct {
 	XMLName    xml.Name `xml:"topartists"`
 	Metro      string   `xml:"metro,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Artists    []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `Xml:"name"`
@@ -109,10 +109,10 @@ type GeoGetMetroHypeArtistChart struct {
 type GeoGetMetroHypeTrackChart struct {
 	XMLName    xml.Name `xml:"toptracks"`
 	Metro      string   `xml:"metro,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `xml:"name"`
@@ -139,10 +139,10 @@ type GeoGetMetroHypeTrackChart struct {
 type GeoGetMetroTrackChart struct {
 	XMLName    xml.Name `xml:"toptracks"`
 	Metro      string   `xml:"metro,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `xml:"name"`
@@ -170,10 +170,10 @@ type GeoGetMetroTrackChart struct {
 type GeoGetMetroUniqueArtistChart struct {
 	XMLName    xml.Name `xml:"topartists"`
 	Metro      string   `xml:"metro,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Artists    []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `Xml:"name"`
@@ -191,10 +191,10 @@ type GeoGetMetroUniqueArtistChart struct {
 type GeoGetMetroUniqueTrackChart struct {
 	XMLName    xml.Name `xml:"toptracks"`
 	Metro      string   `xml:"metro,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `xml:"name"`
@@ -239,10 +239,10 @@ type GeoGetMetros struct {
 type GeoGetTopArtists struct {
 	XMLName    xml.Name `xml:"topartists"`
 	Country    string   `xml:"country,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Artists    []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `Xml:"name"`
@@ -260,11 +260,11 @@ type GeoGetTopArtists struct {
 //geo.getTopTracks
 type GeoGetTopTracks struct {
 	XMLName    xml.Name `xml:"toptracks"`
-	Country    string   `xml:"country"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Country    string   `xml:"country,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `xml:"name"`

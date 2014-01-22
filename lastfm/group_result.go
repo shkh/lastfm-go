@@ -25,10 +25,10 @@ type GroupGetHype struct {
 type GroupGetMembers struct {
 	XMLName    xml.Name `xml:"members"`
 	For        string   `xml:"for,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Members    []struct {
 		Name     string `xml:"name"`
 		RealName string `xml:"realname"`
@@ -42,9 +42,9 @@ type GroupGetMembers struct {
 //group.getWeeklyAlbumChart
 type GroupGetWeeklyAlbumChart struct {
 	XMLName xml.Name `xml:"weeklyalbumchart"`
-	Group   string   `xml:"group"`
-	From    string   `xml:"from"`
-	To      string   `xml:"to"`
+	Group   string   `xml:"group,attr"`
+	From    string   `xml:"from,attr"`
+	To      string   `xml:"to,attr"`
 	Albums  []struct {
 		Rank   string `xml:"rank,attr"`
 		Artist struct {

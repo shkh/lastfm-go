@@ -125,10 +125,10 @@ type TrackGetShouts struct {
 	XMLName    xml.Name `xml:"shouts"`
 	Artist     string   `xml:"artist,attr"`
 	Track      string   `xml:"album,attr"`
-	Total      string   `xml:"total,attr"`
-	Page       string   `xml:"page,attr"`
-	PerPage    string   `xml:"perPage,attr"`
-	TotalPages string   `xml:"totalPages"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
 	Shouts     []struct {
 		Body   string `xml:"body"`
 		Author string `xml:"author"`

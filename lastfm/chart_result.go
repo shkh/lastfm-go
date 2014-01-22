@@ -4,12 +4,12 @@ import "encoding/xml"
 
 //chart.getHypedArtists
 type ChartGetHypedArtists struct {
-	XMLName   xml.Name `xml:"artists"`
-	Total     int      `xml:"total"`
-	Page      int      `xml:"page,attr"`
-	PerPage   int      `xml:"perPage,attr"`
-	TotalPage int      `xml:"totalPages,attr"`
-	Artists   []struct {
+	XMLName    xml.Name `xml:"artists"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
+	Artists    []struct {
 		Name             string `xml:"name"`
 		PercentageChange string `xml:"percentagechange"`
 		Mbid             string `xml:"mbid"`
@@ -23,12 +23,12 @@ type ChartGetHypedArtists struct {
 
 //chart.getHypedTracks
 type ChartGetHypedTracks struct {
-	XMLName   xml.Name `xml:"tracks"`
-	Total     int      `xml:"total"`
-	Page      int      `xml:"page,attr"`
-	PerPage   int      `xml:"perPage,attr"`
-	TotalPage int      `xml:"totalPages,attr"`
-	Tracks    []struct {
+	XMLName    xml.Name `xml:"tracks"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
+	Tracks     []struct {
 		Name             string `xml:"name"`
 		PercentageChange string `xml:"percentagechange"`
 		Mbid             string `xml:"mbid"`
@@ -48,12 +48,12 @@ type ChartGetHypedTracks struct {
 
 //chart.getLovedTracks
 type ChartGetLovedTracks struct {
-	XMLName   xml.Name `xml:"tracks"`
-	Page      int      `xml:"page,attr"`
-	PerPage   int      `xml:"perPage,attr"`
-	TotalPage int      `xml:"totalPages,attr"`
-	Total     int      `xml:"total"`
-	Tracks    []struct {
+	XMLName    xml.Name `xml:"tracks"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
+	Tracks     []struct {
 		Name       string `xml:"name"`
 		Loves      int    `xml:"loves"`
 		Url        string `xml:"url"`
@@ -72,12 +72,12 @@ type ChartGetLovedTracks struct {
 
 //chart.getTopArtists
 type ChartGetTopArtists struct {
-	XMLName   xml.Name `xml:"artists"`
-	Total     int      `xml:"total"`
-	Page      int      `xml:"page,attr"`
-	PerPage   int      `xml:"perPage,attr"`
-	TotalPage int      `xml:"totalPages,attr"`
-	Artists   []struct {
+	XMLName    xml.Name `xml:"artists"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
+	Artists    []struct {
 		Name       string `xml:"name"`
 		PlayCount  string `xml:"playcount"`
 		Listeners  string `xml:"listeners"`
@@ -93,12 +93,12 @@ type ChartGetTopArtists struct {
 
 //chart.getTopTags
 type ChartGetTopTags struct {
-	XMLName   xml.Name `xml:"tags"`
-	Total     int      `xml:"total"`
-	Page      int      `xml:"page,attr"`
-	PerPage   int      `xml:"perPage,attr"`
-	TotalPage int      `xml:"totalPages,attr"`
-	Tags      []struct {
+	XMLName    xml.Name `xml:"tags"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
+	Tags       []struct {
 		Name       string `xml:"name"`
 		Url        string `xml:"url"`
 		Reach      string `xml:"reach"`
@@ -114,12 +114,12 @@ type ChartGetTopTags struct {
 
 //chart.getTopTracks
 type ChartGetTopTracks struct {
-	XMLName   xml.Name `xml:"tracks"`
-	Page      int      `xml:"page,attr"`
-	PerPage   int      `xml:"perPage,attr"`
-	TotalPage int      `xml:"totalPages,attr"`
-	Total     int      `xml:"total"`
-	Tracks    []struct {
+	XMLName    xml.Name `xml:"tracks"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
+	Tracks     []struct {
 		Name       string `xml:"name"`
 		Duration   string `xml:"duration"`
 		PlayCount  string `xml:"playcount"`
