@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"time"
 )
 
 func getTrimmedString(r *bufio.Reader, msg string) (res string) {
@@ -18,7 +17,7 @@ func getTrimmedString(r *bufio.Reader, msg string) (res string) {
 
 func main() {
 	r := bufio.NewReader(os.Stdin)
-	apiKey := getTrimmedString(r, "API KEY")
+	apiKey := getTrimmedString(r, "API KEY:")
 	apiSecret := getTrimmedString(r, "API SECRET")
 
 	api := lastfm.New(apiKey, apiSecret)
@@ -32,25 +31,11 @@ func main() {
 		return
 	}
 
-	artist := getTrimmedString(r, "Artist")
-	track := getTrimmedString(r, "Track")
+	target := getTrimmedString(r, "Target")
+	message := getTrimmedString(r, "Message")
 
-	p := lastfm.P{"artist": artist, "track": track}
-	_, err = api.Track.UpdateNowPlaying(p)
+	err = api.User.Shout(lastfm.P{"user": target, "message": message})
 	if err != nil {
 		fmt.Println(err)
-		return
 	}
-	fmt.Println("Updated Now-Playing.")
-	start := time.Now().Unix()
-
-	time.Sleep(35 * time.Second)
-
-	p["timestamp"] = start
-	_, err = api.Track.Scrobble(p)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	fmt.Println("Scrobbled.")
 }
