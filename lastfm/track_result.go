@@ -2,8 +2,9 @@ package lastfm
 
 import "encoding/xml"
 
-//track.addTags
-//track.ban
+//track.addTags (empty)
+
+//track.ban (empty)
 
 //track.getBuylinks
 type TrackGetBuylinks struct {
@@ -203,8 +204,9 @@ type TrackGetTopTags struct {
 	} `xml:"tag"`
 }
 
-//track.love
-//track.removeTag
+//track.love (empty)
+
+//track.removeTag (empty)
 
 //track.scrobble
 type TrackScrobble struct {
@@ -266,9 +268,11 @@ type TrackSearch struct {
 	} `xml:"trackmatches>track"`
 }
 
-//track.share
-//track.unban
-//track.unlove
+//track.share (empty)
+
+//track.unban (empty)
+
+//track.unlove (empty)
 
 //track.updateNowPlaying
 type TrackUpdateNowPlaying struct {

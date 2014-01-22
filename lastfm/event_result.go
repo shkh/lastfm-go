@@ -87,7 +87,8 @@ type EventGetShouts struct {
 	} `xml:"shout"`
 }
 
-//event.share
-//event.shout
+//event.share (emptry)
 
-//evenc.getInfo
+//event.shout (empty)
+
+//evenc.getInfo (empty)

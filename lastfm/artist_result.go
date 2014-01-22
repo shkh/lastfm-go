@@ -6,7 +6,7 @@ import "encoding/xml"
 // artist.x //
 //////////////
 
-//artist.addTags
+//artist.addTags (empty)
 
 //artist.getCorrection
 type ArtistGetCorrection struct {

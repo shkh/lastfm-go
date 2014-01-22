@@ -2,9 +2,11 @@ package lastfm
 
 import "encoding/xml"
 
-//library.addAlbum
-//library.addArtist
-//library.addTrack
+//library.addAlbum (emptry)
+
+//library.addArtist (empty)
+
+//library.addTrack (empty)
 
 //library.getAlbums
 type LibraryGetAlbums struct {
@@ -89,7 +91,10 @@ type LibraryGetTracks struct {
 	} `xml:"track"`
 }
 
-//library.removeAlbum
-//library.removeArtist
-//library.removeScrobble
-//library.removeTrack
+//library.removeAlbum (empty)
+
+//library.removeArtist (empty)
+
+//library.removeScrobble (empty)
+
+//library.removeTrack (empty)

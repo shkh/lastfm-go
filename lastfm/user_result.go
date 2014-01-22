@@ -2,10 +2,6 @@ package lastfm
 
 import "encoding/xml"
 
-////////////
-// user.x //
-////////////
-
 //user.getArtistTracks
 type UserGetArtistTracks struct {
 	User       string `xml:"user,attr"`
@@ -690,6 +686,8 @@ type UserGetWeeklyTrackChart struct {
 	} `xml:"track"`
 }
 
-//user.shout
-//user.signUp
-//user.terms
+//user.shout (empty)
+
+//user.signUp (deprecated)
+
+//user.terms (deprecated)

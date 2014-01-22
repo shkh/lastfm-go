@@ -141,4 +141,4 @@ type AlbumSearch struct {
 	} `xml:"albummatches>album"`
 }
 
-//album.share (empty)resu
+//album.share (empty)
