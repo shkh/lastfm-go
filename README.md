@@ -24,7 +24,7 @@ Note that some API methods require your user's permission, so make sure that you
 API instances contain the structs which represent API classes, and each struct has methods corresponding to their API methods. 
 So you can call `user.getNeighbours` for example as following:
 
-	result, _ := api.User.GetNeighbours (latfm.P{"user": "shkh_"}) //discarding error
+	result, _ := api.User.GetNeighbours (lastfm.P{"user": "shkh_"}) //discarding error
 	for _, u := range result.Users {
 		fmt.Println (u.Name, u.Match)
 	}
