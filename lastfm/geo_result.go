@@ -2,64 +2,66 @@ package lastfm
 
 import "encoding/xml"
 
-//geo.getEvents
-type GeoGetEvents struct {
-	XMLName       xml.Name `xml:"events"`
-	Geo           string   `xml:"geo,attr"`
-	Location      string   `xml:"location,attr"`
-	Tag           string   `xml:"tag,attr"`
-	FestivalsOnly string   `xml:"festivalsonly,attr"`
-	Total         int      `xml:"total,attr"`
-	Page          int      `xml:"page,attr"`
-	PerPage       int      `xml:"perPage,attr"`
-	TotalPages    int      `xml:"totalPages,attr"`
-	Events        []struct {
-		Geo     string `xml:"geo,attr"`
-		Id      string `xml:"id"`
-		Title   string `xml:"title"`
-		Artists struct {
-			Headliner string   `xml:"headliner"`
-			Artists   []string `xml:"artist"`
-		} `xml:"artists"`
-		Venue struct {
-			Id       string `xml:"id"`
-			Name     string `xml:"name"`
-			Location struct {
-				City       string `xml:"city"`
-				Country    string `xml:"country"`
-				Street     string `xml:"street"`
-				Postalcode string `xml:"postalcode"`
-				Point      struct {
-					Lat  string `xml:"lat"`
-					Long string `xml:"long"`
-				} `xml:"point"`
-			} `xml:"location"`
-			Url         string `xml:"url"`
-			Website     string `xml:"website"`
-			PhoneNumber string `xml:"phonenumber"`
-			Images      []struct {
-				Size string `xml:"size,attr"`
-				Url  string `xml:",chardata"`
-			} `xml:"image"`
-		} `xml:"venue"`
-		StartDate   string `xml:"startdate"`
-		Description string `xml:"description"`
+type GeoGetEventsEvent struct {
+	Geo     string `xml:"geo,attr"`
+	Id      string `xml:"id"`
+	Title   string `xml:"title"`
+	Artists struct {
+		Headliner string   `xml:"headliner"`
+		Artists   []string `xml:"artist"`
+	} `xml:"artists"`
+	Venue struct {
+		Id       string `xml:"id"`
+		Name     string `xml:"name"`
+		Location struct {
+			City       string `xml:"city"`
+			Country    string `xml:"country"`
+			Street     string `xml:"street"`
+			Postalcode string `xml:"postalcode"`
+			Point      struct {
+				Lat  string `xml:"lat"`
+				Long string `xml:"long"`
+			} `xml:"point"`
+		} `xml:"location"`
+		Url         string `xml:"url"`
+		Website     string `xml:"website"`
+		PhoneNumber string `xml:"phonenumber"`
 		Images      []struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-		Attendance string `xml:"attendance"`
-		Reviews    string `xml:"reviews"`
-		Tag        string `xml:"tag"`
-		Url        string `xml:"url"`
-		Website    string `xml:"website"`
-		Tickets    []struct {
-			Supplier string `xml:"supplier,attr"`
-			Url      string `xml",chardata"`
-		} `xml:"tickets>ticket"`
-		Canceled string   `xml:"canceled"`
-		Tags     []string `xml:"tags>tag"`
-	} `xml:"event"`
+	} `xml:"venue"`
+	StartDate   string `xml:"startDate"`
+	Description string `xml:"description"`
+	Images      []struct {
+		Size string `xml:"size,attr"`
+		Url  string `xml:",chardata"`
+	} `xml:"image"`
+	Attendance string `xml:"attendance"`
+	Reviews    string `xml:"reviews"`
+	Tag        string `xml:"tag"`
+	Url        string `xml:"url"`
+	Website    string `xml:"website"`
+	Tickets    []struct {
+		Supplier string `xml:"supplier,attr"`
+		Url      string `xml",chardata"`
+	} `xml:"tickets>ticket"`
+	Canceled string   `xml:"canceled"`
+	Tags     []string `xml:"tags>tag"`
+}
+
+//geo.getEvents
+type GeoGetEvents struct {
+	XMLName       xml.Name            `xml:"events"`
+	Geo           string              `xml:"geo,attr"`
+	Location      string              `xml:"location,attr"`
+	Tag           string              `xml:"tag,attr"`
+	FestivalsOnly string              `xml:"festivalsonly,attr"`
+	Total         int                 `xml:"total,attr"`
+	Page          int                 `xml:"page,attr"`
+	PerPage       int                 `xml:"perPage,attr"`
+	TotalPages    int                 `xml:"totalPages,attr"`
+	Events        []GeoGetEventsEvent `xml:"event"`
 }
 
 //geo.getMetroArtistChart

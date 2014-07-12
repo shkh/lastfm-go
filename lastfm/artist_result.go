@@ -59,7 +59,7 @@ type ArtistGetEvents struct {
 				Url  string `xml:",chardata"`
 			} `xml:"image"`
 		} `xml:"venue"`
-		StartDate   string `xml:"startdate"`
+		StartDate   string `xml:"startDate"`
 		Description string `xml:"description"`
 		Images      []struct {
 			Size string `xml:"size,attr"`
@@ -166,7 +166,7 @@ type ArtistGetPastEvents struct {
 				Url  string `xml:",chardata"`
 			} `xml:"image"`
 		} `xml:"venue"`
-		StartDate   string `xml:"startdate"`
+		StartDate   string `xml:"startDate"`
 		Description string `xml:"description"`
 		Images      []struct {
 			Size string `xml:"size,attr"`

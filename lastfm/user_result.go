@@ -104,7 +104,7 @@ type UserGetEvents struct {
 				Url  string `xml:",chardata"`
 			} `xml:"image"`
 		} `xml:"venue"`
-		StartDate   string `xml:"startdate"`
+		StartDate   string `xml:"startDate"`
 		Description string `xml:"description"`
 		Images      []struct {
 			Size string `xml:"size,attr"`
@@ -309,7 +309,7 @@ type UserGetPastEvents struct {
 				Url  string `xml:",chardata"`
 			} `xml:"image"`
 		} `xml:"venue"`
-		StartDate   string `xml:"startdate"`
+		StartDate   string `xml:"startDate"`
 		Description string `xml:"description"`
 		Images      []struct {
 			Size string `xml:"size,attr"`
@@ -496,7 +496,7 @@ type UserGetRecommendedEvents struct {
 				Url  string `xml:",chardata"`
 			} `xml:"image"`
 		} `xml:"venue"`
-		StartDate   string `xml:"startdate"`
+		StartDate   string `xml:"startDate"`
 		Description string `xml:"description"`
 		Images      []struct {
 			Size string `xml:"size,attr"`
