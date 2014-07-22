@@ -242,6 +242,10 @@ func callGet(apiMethod string, params *apiParams, args map[string]interface{}, r
 	if err != nil {
 		return
 	}
+	if res.StatusCode/100 == 5 { // only 5xx class errors
+		err = newLibError(res.StatusCode, res.Status)
+		return
+	}
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return
