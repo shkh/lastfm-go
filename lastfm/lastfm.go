@@ -46,6 +46,7 @@ func New(key, secret string) (api *Api) {
 		Library:     &libraryApi{&params},
 		Playlist:    &playlistApi{&params},
 		Radio:       &radioApi{&params},
+		Tag:         &tagApi{&params},
 		Tasteometer: &tasteometerApi{&params},
 		Track:       &trackApi{&params},
 		User:        &userApi{&params},
