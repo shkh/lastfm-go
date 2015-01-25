@@ -418,6 +418,7 @@ type UserGetRecentTracks struct {
 	PerPage    int      `xml:"perPage,attr"`
 	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
+		NowPlaying string `xml:"nowplaying,attr,omitempty"`
 		Artist struct {
 			Name string `xml:",chardata"`
 			Mbid string `xml:"mbid,attr"`
