@@ -269,7 +269,7 @@ type UserGetNewReleases struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-	} `xml:"arlbum"`
+	} `xml:"album"`
 }
 
 //user.getPastEvents
