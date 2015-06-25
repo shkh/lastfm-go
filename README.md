@@ -31,7 +31,7 @@ So you can call `user.getNeighbours` for example as following:
 
 Methods that fetch some data return their result as a struct named `ClassMethod` (e.g. api.User.GetInfo returns its result of type UserGetInfo).
 They can be found in `class_result.go`.
-Please look at the file to see which fileds are exported.
+Please look at the file to see which fields are exported.
 		
 You can use `lastfm.P` for arguments. 
 It's just an alias to `map[string]interface{}`, but values must be `string`, `int`, `int64` (for unix timestamp) or `[]string`.
