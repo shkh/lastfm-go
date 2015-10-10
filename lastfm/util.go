@@ -263,7 +263,6 @@ func callPost(apiMethod string, params *apiParams, args P, result interface{}, r
 	}
 
 	urlParams := url.Values{}
-	urlParams.Add("method", apiMethod)
 	uri := constructUrl(UriApiSecBase, urlParams)
 
 	//post data
@@ -311,7 +310,6 @@ func callPost(apiMethod string, params *apiParams, args P, result interface{}, r
 
 func callPostWithoutSession(apiMethod string, params *apiParams, args P, result interface{}, rules P) (err error) {
 	urlParams := url.Values{}
-	urlParams.Add("method", apiMethod)
 	uri := constructUrl(UriApiSecBase, urlParams)
 
 	//post data
