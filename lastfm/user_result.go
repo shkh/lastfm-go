@@ -136,7 +136,6 @@ type UserGetFriends struct {
 		Name       string `xml:"name"`
 		RealName   string `xml:"realname"`
 		Url        string `xml:"url"`
-		Image      string `xml:"image"`
 		Country    string `xml:"country"`
 		Age        string `xml:"age"`
 		Gender     string `xml:"gender"`
