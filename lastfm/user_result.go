@@ -422,6 +422,7 @@ type UserGetRecentTracks struct {
 			Name string `xml:",chardata"`
 			Mbid string `xml:"mbid,attr"`
 		} `xml:"artist"`
+		NowPlaying bool   `xml:"nowplaying,attr"`
 		Name       string `xml:"name"`
 		Streamable string `xml:"streamable"`
 		Mbid       string `xml:"mbid"`
