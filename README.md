@@ -1,9 +1,9 @@
-#Lastfm-go
+# Lastfm-go
 Golang wrapper for the Last.fm API 2.0 
 
 [http://www.lastfm.jp/api](http://www.lastfm.jp/api)
 
-#Setup
+# Setup
 
 Get the source codes from github :
   
@@ -13,7 +13,7 @@ Import the package :
 
     import "github.com/shkh/lastfm-go/lastfm"
 
-#Usage
+# Usage
 
 First, create an API instance with your `API KEY` and `API SECRET`.
 	
@@ -52,7 +52,7 @@ Slice of string, []string, can be used for passing multiple values for a key.
 
 
 
-#Authentication
+# Authentication
 There are three ways to authenticate your requests, which to choose depends on what kind of application you are making.
 
 - for Mobile Apps
@@ -76,9 +76,9 @@ There are three ways to authenticate your requests, which to choose depends on w
 		api.LoginWithToken (token) //discarding error
 	
 
-#Supported APIs
+# Supported APIs
 
-##Album
+## Album
 * [album.addTags](http://www.lastfm.jp/api/show/album.addTags)
 * [album.getBuylinks](http://www.lastfm.jp/api/show/album.getBuylinks)
 * [album.getInfo](http://www.lastfm.jp/api/show/album.getInfo)
@@ -89,7 +89,7 @@ There are three ways to authenticate your requests, which to choose depends on w
 * [album.search](http://www.lastfm.jp/api/show/album.search)
 * [album.share](http://www.lastfm.jp/api/show/album.share)
 
-##Artist
+## Artist
 * [artist.addTags](http://www.lastfm.jp/api/show/artist.addTags)
 * [artist.getCorrection](http://www.lastfm.jp/api/show/artist.getCorrection)
 * [artist.getEvents](http://www.lastfm.jp/api/show/artist.getEvents)
@@ -108,12 +108,12 @@ There are three ways to authenticate your requests, which to choose depends on w
 * [artist.share](http://www.lastfm.jp/api/show/artist.share)
 * [artist.shout](http://www.lastfm.jp/api/show/artist.shout)
 
-##Auth
+## Auth
 * auth.getMobileSession
 * auth.getSession
 * auth.getToken
 
-##Chart
+## Chart
 * [chart.getHypedArtists](http://www.lastfm.jp/api/show/chart.getHypedArtists)
 * [chart.getHypedTracks](http://www.lastfm.jp/api/show/chart.getHypedTracks)
 * [chart.getLovedTracks](http://www.lastfm.jp/api/show/chart.getLovedTracks)
@@ -121,7 +121,7 @@ There are three ways to authenticate your requests, which to choose depends on w
 * [chart.getTopTags](http://www.lastfm.jp/api/show/chart.getTopTags)
 * [chart.getTopTracks](http://www.lastfm.jp/api/show/chart.getTopTracks)
 
-##Event
+## Event
 * [event.attend](http://www.lastfm.jp/api/show/event.attend)
 * [event.getAttendees](http://www.lastfm.jp/api/show/event.getAttendees)
 * [event.getInfo](http://www.lastfm.jp/api/show/event.getInfo)
@@ -129,7 +129,7 @@ There are three ways to authenticate your requests, which to choose depends on w
 * [event.share](http://www.lastfm.jp/api/show/event.share)
 * [event.shout](http://www.lastfm.jp/api/show/event.shout)
 
-##Geo
+## Geo
 * [geo.getEvents](http://www.lastfm.jp/api/show/geo.getEvents)
 * [geo.getMetroArtistChart](http://www.lastfm.jp/api/show/geo.getMetroArtistChart)
 * [geo.getMetroHypeArtistChart](http://www.lastfm.jp/api/show/geo.getMetroHypeArtistChart)
@@ -142,7 +142,7 @@ There are three ways to authenticate your requests, which to choose depends on w
 * [geo.getTopArtists](http://www.lastfm.jp/api/show/geo.getTopArtists)
 * [geo.getTopTracks](http://www.lastfm.jp/api/show/geo.getTopTracks)
 
-##Group
+## Group
 * [group.getHype](http://www.lastfm.jp/api/show/group.getHype)
 * [group.getMembers](http://www.lastfm.jp/api/show/group.getMembers)
 * [group.getWeeklyAlbumChart](http://www.lastfm.jp/api/show/group.getWeeklyAlbumChart)
@@ -150,7 +150,7 @@ There are three ways to authenticate your requests, which to choose depends on w
 * [group.getWeeklyChartList](http://www.lastfm.jp/api/show/group.getWeeklyChartList)
 * [group.getWeeklyTrackChart](http://www.lastfm.jp/api/show/group.getWeeklyTrackChart)
 
-##Library
+## Library
 * [library.addAlbum](http://www.lastfm.jp/api/show/library.addAlbum)
 * [library.addArtist](http://www.lastfm.jp/api/show/library.addArtist)
 * [library.addTrack](http://www.lastfm.jp/api/show/library.addTrack)
@@ -162,11 +162,11 @@ There are three ways to authenticate your requests, which to choose depends on w
 * [library.removeScrobble](http://www.lastfm.jp/api/show/library.removeScrobble)
 * [library.removeTrack](http://www.lastfm.jp/api/show/library.removeTrack)
 
-##Playlist
+## Playlist
 * [playlist.addTrack](http://www.lastfm.jp/api/show/playlist.addTrack)
 * [playlist.create](http://www.lastfm.jp/api/show/playlist.create)
 
-##Radio
+## Radio
 * [radio.getPlaylist](http://www.lastfm.jp/api/show/radio.getPlaylist)
 * [radio.search](http://www.lastfm.jp/api/show/radio.search)
 * [radio.tune](http://www.lastfm.jp/api/show/radio.tune)
@@ -236,10 +236,10 @@ There are three ways to authenticate your requests, which to choose depends on w
 * ~~user.signUp~~ (deprecated)
 * ~~user.terms~~ (deprecated)
 
-##Venue
+## Venue
 * [venue.getEvents](http://www.lastfm.jp/api/show/venue.getEvents)
 * [venue.getPastEvents](http://www.lastfm.jp/api/show/venue.getPastEvents)
 * [venue.search](http://www.lastfm.jp/api/show/venue.search)
 
-#Licence
+# Licence
 MIT Licenced. See [LICENCE](https://github.com/shkh/lastfm-go/blob/master/LICENSE).
