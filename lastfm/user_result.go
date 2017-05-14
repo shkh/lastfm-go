@@ -117,7 +117,7 @@ type UserGetEvents struct {
 		Website    string `xml:"website"`
 		Tickets    []struct {
 			Supplier string `xml:"supplier,attr"`
-			Url      string `xml",chardata"`
+			Url      string `xml:",chardata"`
 		} `xml:"tickets>ticket"`
 		Tags []string `xml:"tags>tag"`
 	} `xml:"event"`
@@ -509,7 +509,7 @@ type UserGetRecommendedEvents struct {
 		Website    string `xml:"website"`
 		Tickets    []struct {
 			Supplier string `xml:"supplier,attr"`
-			Url      string `xml",chardata"`
+			Url      string `xml:",chardata"`
 		} `xml:"tickets>ticket"`
 		Tags []string `xml:"tags>tag"`
 	} `xml:"event"`

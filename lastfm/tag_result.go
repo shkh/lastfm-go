@@ -49,7 +49,7 @@ type TagGetTopAlbums struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-	} `xml"album"`
+	} `xml:"album"`
 }
 
 //tag.getTopArtists
@@ -69,7 +69,7 @@ type TagGetTopArtists struct {
 			Size string `xml:"size,attr"`
 			Url  string `xml:",chardata"`
 		} `xml:"image"`
-	} `xml"artist"`
+	} `xml:"artist"`
 }
 
 //tag.getTopTags
