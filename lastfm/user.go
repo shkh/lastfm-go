@@ -125,6 +125,17 @@ func (api userApi) GetRecentTracks(args map[string]interface{}) (result UserGetR
 	return
 }
 
+//user.getRecentTracks (extended: 1)
+func (api userApi) GetRecentTracksExtended(args map[string]interface{}) (result UserGetRecentTracksExtended, err error) {
+	args["extended"] = 1
+
+	defer func() { appendCaller(err, "lastfm.User.GetRecentTracks") }()
+	err = callGet("user.getrecenttracks", api.params, args, &result, P{
+		"plain": []string{"user", "limit", "page", "from", "extended", "to"},
+	})
+	return
+}
+
 //user.getRecommendedArtists (auth required)
 func (api userApi) GetRecommendedArtists(args map[string]interface{}) (result UserGetRecommendedArtists, err error) {
 	defer func() { appendCaller(err, "lastfm.User.GetRecommendedArtists") }()
