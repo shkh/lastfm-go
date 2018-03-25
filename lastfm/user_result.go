@@ -418,7 +418,7 @@ type UserGetRecentTracks struct {
 	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		NowPlaying string `xml:"nowplaying,attr,omitempty"`
-		Artist struct {
+		Artist     struct {
 			Name string `xml:",chardata"`
 			Mbid string `xml:"mbid,attr"`
 		} `xml:"artist"`
@@ -438,6 +438,45 @@ type UserGetRecentTracks struct {
 			Uts  string `xml:"uts,attr"`
 			Date string `xml:",chardata"`
 		} `xml:"date"`
+	} `xml:"track"`
+}
+
+//user.getRecentTracks (extended: 1)
+type UserGetRecentTracksExtended struct {
+	XMLName    xml.Name `xml:"recenttracks"`
+	User       string   `xml:"user,attr"`
+	Total      int      `xml:"total,attr"`
+	Page       int      `xml:"page,attr"`
+	PerPage    int      `xml:"perPage,attr"`
+	TotalPages int      `xml:"totalPages,attr"`
+	Tracks     []struct {
+		NowPlaying string `xml:"nowplaying,attr,omitempty"`
+		Artist     struct {
+			Name  string `xml:"name"`
+			Mbid  string `xml:"mbid"`
+			Url   string `xml:"url"`
+			Image []struct {
+				Size string `xml:"size,attr"`
+				Url  string `xml:",chardata"`
+			} `xml:"image"`
+		} `xml:"artist"`
+		Name       string `xml:"name"`
+		Streamable string `xml:"streamable"`
+		Mbid       string `xml:"mbid"`
+		Album      struct {
+			Name string `xml:",chardata"`
+			Mbid string `xml:"mbid,attr"`
+		} `xml:"album"`
+		Url    string `xml:"url"`
+		Images []struct {
+			Size string `xml:"size,attr"`
+			Url  string `xml:",chardata"`
+		} `xml:"image"`
+		Date struct {
+			Uts  string `xml:"uts,attr"`
+			Date string `xml:",chardata"`
+		} `xml:"date"`
+		Loved string `xml:"loved,omitempty"`
 	} `xml:"track"`
 }
 
