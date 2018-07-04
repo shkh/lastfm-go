@@ -38,91 +38,6 @@ type UserGetArtistTracks struct {
 	} `xml:"track"`
 }
 
-//user.getBanndedTracks
-type UserGetBannedTracks struct {
-	XMLName    xml.Name `xml:"bannedtracks"`
-	User       string   `xml:"user,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Tracks     []struct {
-		Name string `xml:"name"`
-		Mbid string `xml:"mbid"`
-		Url  string `xml:"url"`
-		Date struct {
-			UTS string `xml:"uts,attr"`
-			Str string `xml:",chardata"`
-		} `xml:"date"`
-		Artist struct {
-			Name string `xml:"name"`
-			Mbid string `xml:"mbid"`
-			Url  string `xml:"url"`
-		}
-		Images []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Streamable struct {
-			FullTrack  string `xml:"fulltrack,attr"`
-			Streamable string `xml:",chardata"`
-		} `xml:"streamable"`
-	} `xml:"track"`
-}
-
-//user.getEvents
-type UserGetEvents struct {
-	XMLName xml.Name `xml:"events"`
-	User    string   `xml:"user,attr"`
-	Geo     string   `xml:"geo,attr"`
-	Events  []struct {
-		Status  string `xml:"status,attr"`
-		Id      string `xml:"id"`
-		Title   string `xml:"title"`
-		Artists struct {
-			Headliner string   `xml:"headliner"`
-			Artists   []string `xml:"artist"`
-		} `xml:"artists"`
-		Venue struct {
-			Id       string `xml:"id"`
-			Name     string `xml:"name"`
-			Location struct {
-				City       string `xml:"city"`
-				Country    string `xml:"country"`
-				Street     string `xml:"street"`
-				Postalcode string `xml:"postalcode"`
-				Point      struct {
-					Lat  string `xml:"lat"`
-					Long string `xml:"long"`
-				} `xml:"point"`
-			} `xml:"location"`
-			Url         string `xml:"url"`
-			Website     string `xml:"website"`
-			PhoneNumber string `xml:"phonenumber"`
-			Images      []struct {
-				Size string `xml:"size,attr"`
-				Url  string `xml:",chardata"`
-			} `xml:"image"`
-		} `xml:"venue"`
-		StartDate   string `xml:"startDate"`
-		Description string `xml:"description"`
-		Images      []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Attendance string `xml:"attendance"`
-		Reviews    string `xml:"reviews"`
-		Tag        string `xml:"tag"`
-		Url        string `xml:"url"`
-		Website    string `xml:"website"`
-		Tickets    []struct {
-			Supplier string `xml:"supplier,attr"`
-			Url      string `xml:",chardata"`
-		} `xml:"tickets>ticket"`
-		Tags []string `xml:"tags>tag"`
-	} `xml:"event"`
-}
-
 //user.getFriends
 type UserGetFriends struct {
 	XMLName    xml.Name `xml:"friends"`
@@ -234,95 +149,6 @@ type UserGetLovedTracks struct {
 	} `xml:"track"`
 }
 
-//user.getNeighbours
-type UserGetNeighbours struct {
-	XMLName xml.Name `xml:"neighbours"`
-	User    string   `xml:"user,attr"`
-	Users   []struct {
-		Name     string `xml:"name"`
-		RealName string `xml:"realname"`
-		Images   []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Match string `xml:"match"`
-	} `xml:"user"`
-}
-
-//user.getNewReleases
-type UserGetNewReleases struct {
-	XMLName xml.Name `xml:"albums"`
-	Source  string   `xml:"source"`
-	User    string   `xml:"user,attr"`
-	Albums  []struct {
-		ReleaseDate string `xml:"releasedate,attr"`
-		Name        string `xml:"name"`
-		Mbid        string `xml:"mbid"`
-		Url         string `xml:"url"`
-		Artist      struct {
-			Name string `xml:"name"`
-			Mbid string `xml:"mbid"`
-			Url  string `xml:"url"`
-		} `xml:"artist"`
-		Images []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-	} `xml:"album"`
-}
-
-//user.getPastEvents
-type UserGetPastEvents struct {
-	XMLName    xml.Name `xml:"events"`
-	User       string   `xml:"user,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Events     []struct {
-		Status  string `xml:"status,attr"`
-		Id      string `xml:"id"`
-		Title   string `xml:"title"`
-		Artists struct {
-			Headliner string   `xml:"headliner"`
-			Artists   []string `xml:"artist"`
-		} `xml:"artists"`
-		Venue struct {
-			Id       string `xml:"id"`
-			Name     string `xml:"name"`
-			Location struct {
-				City       string `xml:"city"`
-				Country    string `xml:"country"`
-				Street     string `xml:"street"`
-				Postalcode string `xml:"postalcode"`
-				Point      struct {
-					Lat  string `xml:"lat"`
-					Long string `xml:"long"`
-				} `xml:"point"`
-			} `xml:"location"`
-			Url         string `xml:"url"`
-			Website     string `xml:"website"`
-			PhoneNumber string `xml:"phonenumber"`
-			Images      []struct {
-				Size string `xml:"size,attr"`
-				Url  string `xml:",chardata"`
-			} `xml:"image"`
-		} `xml:"venue"`
-		StartDate   string `xml:"startDate"`
-		Description string `xml:"description"`
-		Images      []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Attendance string `xml:"attendance"`
-		Reviews    string `xml:"reviews"`
-		Canceled   string `xml:"canceled"`
-		Tag        string `xml:"tag"`
-		Url        string `xml:"url"`
-		Website    string `xml:"website"`
-	}
-}
-
 //user.getPersonalTags
 type UserGetPersonalTags struct {
 	XMLName    xml.Name `xml:"taggings"`
@@ -363,51 +189,6 @@ type UserGetPersonalTags struct {
 	} `xml:"tracks>track"`
 }
 
-//user.getPlaylists
-type UserGetPlaylists struct {
-	XMLName   xml.Name `xml:"playlists"`
-	User      string   `xml:"user,attr"`
-	Playlists []struct {
-		Id          string `xml:"id"`
-		Title       string `xml:"title"`
-		Description string `xml:"description"`
-		Date        string `xml:"date"`
-		Size        string `xml:"size"`
-		Duration    string `xml:"duration"`
-		Streamable  string `xml:"streamable"`
-		Creator     string `xml:"creator"`
-		Url         string `xml:"url"`
-		Images      []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-	} `xml:"playlists>playlist"`
-}
-
-//user.getRecentStations
-type UserGetRecentStations struct {
-	XMLName    xml.Name `xml:"recentstations"`
-	User       string   `xml:"user,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Stations   []struct {
-		Type      string `xml:"type"`
-		Name      string `xml:"name"`
-		Url       string `xml:"url"`
-		Resources []struct {
-			Type   string `xml:"type"`
-			Name   string `xml:"name"`
-			Url    string `xml:"url"`
-			Images []struct {
-				Size string `xml:"size,attr"`
-				Url  string `xml:",chardata"`
-			} `xml:"image"`
-		} `xml:"resources>resource"`
-	} `xml:"station"`
-}
-
 //user.getRecentTracks
 type UserGetRecentTracks struct {
 	XMLName    xml.Name `xml:"recenttracks"`
@@ -418,7 +199,7 @@ type UserGetRecentTracks struct {
 	TotalPages int      `xml:"totalPages,attr"`
 	Tracks     []struct {
 		NowPlaying string `xml:"nowplaying,attr,omitempty"`
-		Artist struct {
+		Artist     struct {
 			Name string `xml:",chardata"`
 			Mbid string `xml:"mbid,attr"`
 		} `xml:"artist"`
@@ -439,95 +220,6 @@ type UserGetRecentTracks struct {
 			Date string `xml:",chardata"`
 		} `xml:"date"`
 	} `xml:"track"`
-}
-
-//user.getRecommendedArtists
-type UserGetRecommendedArtists struct {
-	XMLName    xml.Name `xml:"recommendations"`
-	User       string   `xml:"user,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Artists    []struct {
-		Name       string `xml:"name"`
-		Mbid       string `xml:"mbid"`
-		Url        string `xml:"url"`
-		Streamable string `xml:"streamable"`
-		Images     []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-	} `xml:"artist"`
-}
-
-//user.getRecommendedEvents
-type UserGetRecommendedEvents struct {
-	XMLName    xml.Name `xml:"events"`
-	User       string   `xml:"user,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Events     []struct {
-		Id      string `xml:"id"`
-		Title   string `xml:"title"`
-		Artists struct {
-			Headliner string   `xml:"headliner"`
-			Artists   []string `xml:"artist"`
-		} `xml:"artists"`
-		Venue struct {
-			Name     string `xml:"name"`
-			Location struct {
-				City       string `xml:"city"`
-				Country    string `xml:"country"`
-				Street     string `xml:"street"`
-				Postalcode string `xml:"postalcode"`
-				Point      struct {
-					Lat  float64 `xml:"lat"`
-					Long float64 `xml:"long"`
-				} `xml:"point"`
-			} `xml:"location"`
-			Url         string `xml:"url"`
-			Website     string `xml:"website"`
-			PhoneNumber string `xml:"phonenumber"`
-			Images      []struct {
-				Size string `xml:"size,attr"`
-				Url  string `xml:",chardata"`
-			} `xml:"image"`
-		} `xml:"venue"`
-		StartDate   string `xml:"startDate"`
-		Description string `xml:"description"`
-		Images      []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Attendance string `xml:"attendance"`
-		Reviews    string `xml:"reviews"`
-		Tag        string `xml:"tag"`
-		Url        string `xml:"url"`
-		Website    string `xml:"website"`
-		Tickets    []struct {
-			Supplier string `xml:"supplier,attr"`
-			Url      string `xml:",chardata"`
-		} `xml:"tickets>ticket"`
-		Tags []string `xml:"tags>tag"`
-	} `xml:"event"`
-}
-
-//user.getShouts
-type UserGetShouts struct {
-	XMLName    xml.Name `xml:"shouts"`
-	User       string   `xml:"user,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Shouts     []struct {
-		Body   string `xml:"body"`
-		Author string `xml:"author"`
-		Date   string `xml:"date"`
-	} `xml:"shout"`
 }
 
 //user.getTopAlbums
@@ -685,9 +377,3 @@ type UserGetWeeklyTrackChart struct {
 		Url string `xml:"url"`
 	} `xml:"track"`
 }
-
-//user.shout (empty)
-
-//user.signUp (deprecated)
-
-//user.terms (deprecated)

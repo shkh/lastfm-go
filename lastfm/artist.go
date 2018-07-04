@@ -22,16 +22,6 @@ func (api artistApi) GetCorrection(args map[string]interface{}) (result ArtistGe
 	return
 }
 
-//artist.getEvents
-func (api artistApi) GetEvents(args map[string]interface{}) (result ArtistGetEvents, err error) {
-	defer func() { appendCaller(err, "lastfm.Artist.GetEvents") }()
-	err = callGet("artist.getevents", api.params, args, &result, P{
-		"plain": []string{"artist", "mbid", "autocorrect", "limit", "page", "festivalsonly"},
-	})
-	return
-
-}
-
 //artist.getInfo
 func (api artistApi) GetInfo(args map[string]interface{}) (result ArtistGetInfo, err error) {
 	defer func() { appendCaller(err, "lastfm.Artist.GetInfo") }()
@@ -44,33 +34,6 @@ func (api artistApi) GetInfo(args map[string]interface{}) (result ArtistGetInfo,
 			"plain": []string{"artist", "mbid", "lang", "autocorrect", "username"},
 		})
 	}
-	return
-}
-
-//artist.getPastEvents
-func (api artistApi) GetPastEvents(args map[string]interface{}) (result ArtistGetPastEvents, err error) {
-	defer func() { appendCaller(err, "lastfm.Artist.GetPastEvents") }()
-	err = callGet("artist.getpastevents", api.params, args, &result, P{
-		"plain": []string{"artist", "mbid", "page", "autocorrect", "limit"},
-	})
-	return
-}
-
-//artist.getPodcast
-func (api artistApi) GetPodcast(args map[string]interface{}) (result ArtistGetPodcast, err error) {
-	defer func() { appendCaller(err, "lastfm.Artist.GetPodcast") }()
-	err = callGet("artist.getpodcast", api.params, args, &result, P{
-		"plain": []string{"artist", "mbid", "autocorrect"},
-	})
-	return
-}
-
-//artist.getShouts
-func (api artistApi) GetShouts(args map[string]interface{}) (result ArtistGetShouts, err error) {
-	defer func() { appendCaller(err, "lastfm.Artist.GetShouts") }()
-	err = callGet("artist.getshouts", api.params, args, &result, P{
-		"plain": []string{"artist", "mbid", "limit", "autocorrect", "page"},
-	})
 	return
 }
 
@@ -107,15 +70,6 @@ func (api artistApi) GetTopAlbums(args map[string]interface{}) (result ArtistGet
 	return
 }
 
-//artist.getTopFans
-func (api artistApi) GetTopFans(args map[string]interface{}) (result ArtistGetTopFans, err error) {
-	defer func() { appendCaller(err, "lastfm.Artist.GetTopFans") }()
-	err = callGet("artist.gettopfans", api.params, args, &result, P{
-		"plain": []string{"artist", "mbid", "autocorrect"},
-	})
-	return
-}
-
 //artist.getTopTags
 func (api artistApi) GetTopTags(args map[string]interface{}) (result ArtistGetTopTags, err error) {
 	defer func() { appendCaller(err, "lastfm.Artist.GetTopTags") }()
@@ -148,24 +102,6 @@ func (api artistApi) Search(args map[string]interface{}) (result ArtistSearch, e
 	defer func() { appendCaller(err, "lastfm.Artist.Search") }()
 	err = callGet("artist.search", api.params, args, &result, P{
 		"plain": []string{"limit", "page", "artist"},
-	})
-	return
-}
-
-//artist.share
-func (api artistApi) Share(args map[string]interface{}) (err error) {
-	defer func() { appendCaller(err, "lastfm.Artist.Share") }()
-	err = callPost("artist.share", api.params, args, nil, P{
-		"plain": []string{"artist", "recipient", "message", "public"},
-	})
-	return
-}
-
-//artist.shout
-func (api artistApi) Shout(args map[string]interface{}) (err error) {
-	defer func() { appendCaller(err, "lastfm.Artist.Shout") }()
-	err = callPost("artist.shout", api.params, args, nil, P{
-		"plain": []string{"artist", "message"},
 	})
 	return
 }

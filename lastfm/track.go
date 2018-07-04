@@ -13,24 +13,6 @@ func (api trackApi) AddTags(args map[string]interface{}) (err error) {
 	return
 }
 
-//track.ban
-func (api trackApi) Ban(args map[string]interface{}) (err error) {
-	defer func() { appendCaller(err, "lastfm.Track.Ban") }()
-	err = callPost("track.ban", api.params, args, nil, P{
-		"plain": []string{"artist", "track"},
-	})
-	return
-}
-
-//track.getBuylinks
-func (api trackApi) GetBuylinks(args map[string]interface{}) (result TrackGetBuylinks, err error) {
-	defer func() { appendCaller(err, "lastfm.Track.GetBuylinks") }()
-	err = callGet("track.getbuylinks", api.params, args, &result, P{
-		"plain": []string{"artist", "track", "mbid", "autocorrect", "country"},
-	})
-	return
-}
-
 //track.getCorrection
 func (api trackApi) GetCorrection(args map[string]interface{}) (result TrackGetCorrection, err error) {
 	defer func() { appendCaller(err, "lastfm.Track.Correction") }()
@@ -40,29 +22,11 @@ func (api trackApi) GetCorrection(args map[string]interface{}) (result TrackGetC
 	return
 }
 
-//track.getFingerprintMetadata
-func (api trackApi) GetFingerprintMetadata(args map[string]interface{}) (result TrackGetFingerprintMetadata, err error) {
-	defer func() { appendCaller(err, "lastfm.Track.Correction") }()
-	err = callGet("track.getfingerprintmetadata", api.params, args, &result, P{
-		"plain": []string{"fingerprintid"},
-	})
-	return
-}
-
 //track.getInfo
 func (api trackApi) GetInfo(args map[string]interface{}) (result TrackGetInfo, err error) {
 	defer func() { appendCaller(err, "lastfm.Track.GetInfo") }()
 	err = callGet("track.getinfo", api.params, args, &result, P{
 		"plain": []string{"artist", "track", "mbid", "username", "autocorrect"},
-	})
-	return
-}
-
-//track.getShouts
-func (api trackApi) GetShouts(args map[string]interface{}) (result TrackGetShouts, err error) {
-	defer func() { appendCaller(err, "lastfm.Track.GetShouts") }()
-	err = callGet("track.getshouts", api.params, args, &result, P{
-		"plain": []string{"artist", "track", "mbid", "limit", "page", "autocorrect"},
 	})
 	return
 }
@@ -88,15 +52,6 @@ func (api trackApi) GetTags(args map[string]interface{}) (result TrackGetTags, e
 			"plain": []string{"artist", "track", "mbid", "user", "autocorrect"},
 		})
 	}
-	return
-}
-
-//track.getTopFans
-func (api trackApi) GetTopFans(args map[string]interface{}) (result TrackGetTopFans, err error) {
-	defer func() { appendCaller(err, "lastfm.Track.GetTopFans") }()
-	err = callGet("track.gettopfans", api.params, args, &result, P{
-		"plain": []string{"artist", "track", "mbid", "autocorrect"},
-	})
 	return
 }
 
@@ -141,24 +96,6 @@ func (api trackApi) Search(args map[string]interface{}) (result TrackSearch, err
 	defer func() { appendCaller(err, "lastfm.Track.Search") }()
 	err = callGet("track.search", api.params, args, &result, P{
 		"plain": []string{"artist", "track", "limit", "page"},
-	})
-	return
-}
-
-//track.share
-func (api trackApi) Share(args map[string]interface{}) (err error) {
-	defer func() { appendCaller(err, "lastfm.Track.Share") }()
-	err = callPost("track.share", api.params, args, nil, P{
-		"plain": []string{"artist", "track", "public", "message", "recipient"},
-	})
-	return
-}
-
-//track.unban
-func (api trackApi) UnBan(args map[string]interface{}) (err error) {
-	defer func() { appendCaller(err, "lastfm.Track.UnBan") }()
-	err = callPost("track.unban", api.params, args, nil, P{
-		"plain": []string{"artist", "track"},
 	})
 	return
 }

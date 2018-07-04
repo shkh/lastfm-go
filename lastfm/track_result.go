@@ -4,35 +4,6 @@ import "encoding/xml"
 
 //track.addTags (empty)
 
-//track.ban (empty)
-
-//track.getBuylinks
-type TrackGetBuylinks struct {
-	XMLName   xml.Name `xml:"affiliations"`
-	Physicals []struct {
-		SupplierName string `xml:"supplierName"`
-		SupplierIcon string `xml:"supplierIcon"`
-		Price        struct {
-			Currency  string `xml:"currency"`
-			Amount    string `xml:"amount"`
-			Formatted string `xml:"formatted"`
-		} `xml:"price"`
-		Buylink  string `xml:"buylink"`
-		IsSearch string `xml:"isSearch"`
-	} `xml:"physicals>affiliation"`
-	Downloads []struct {
-		SupplierName string `xml:"supplierName"`
-		SupplierIcon string `xml:"supplierIcon"`
-		Price        struct {
-			Currency  string `xml:"currency"`
-			Amount    string `xml:"amount"`
-			Formatted string `xml:"formatted"`
-		} `xml:"price"`
-		Buylink  string `xml:"buylink"`
-		IsSearch string `xml:"isSearch"`
-	} `xml:"downloads>affiliation"`
-}
-
 //track.getCorrection
 type TrackGetCorrection struct {
 	XMLName    xml.Name `xml:"corrections"`
@@ -51,31 +22,6 @@ type TrackGetCorrection struct {
 			} `xml:"artist"`
 		} `xml:"track"`
 	} `xml:"correction"`
-}
-
-//track.getFingerprintMetadata
-type TrackGetFingerprintMetadata struct {
-	XMLName xml.Name `xml:"tracks"`
-	Tracks  []struct {
-		Rank       string `xml:"rank,attr"`
-		Name       string `xml:"name"`
-		Duration   string `xml:"duration"`
-		Mbid       string `xmll:"mbid"`
-		Url        string `xml:"url"`
-		Streamable struct {
-			FullTrack  string `xml:"fulltrack,attr"`
-			Streamable string `xml:"streamable"`
-		} `xml:"streamable"`
-		Artist struct {
-			Name string `xml:"name"`
-			Mbid string `xml:"mbid"`
-			Url  string `xml:"url"`
-		} `xml:"artist"`
-		Images []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-	} `xml:"track"`
 }
 
 //track.getInfo
@@ -120,22 +66,6 @@ type TrackGetInfo struct {
 	} `xml:"wiki"`
 }
 
-//track.getShouts
-type TrackGetShouts struct {
-	XMLName    xml.Name `xml:"shouts"`
-	Artist     string   `xml:"artist,attr"`
-	Track      string   `xml:"album,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Shouts     []struct {
-		Body   string `xml:"body"`
-		Author string `xml:"author"`
-		Date   string `xml:"date"`
-	} `xml:"shout"`
-}
-
 //track.getSimilar
 type TrackGetSimilar struct {
 	XMLName xml.Name `xml:"similartracks"`
@@ -173,23 +103,6 @@ type TrackGetTags struct {
 		Name string `xml:"name"`
 		Url  string `xml:"url"`
 	} `xml:"tag"`
-}
-
-//track.getTopFans
-type TrackGetTopFans struct {
-	XMLName xml.Name `xml:"topfans"`
-	Artist  string   `xml:"artist,attr"`
-	Track   string   `xml:"track,attr"`
-	Users   []struct {
-		Name     string `xml:"name"`
-		RealName string `xml:"realname"`
-		Url      string `xml:"url"`
-		Images   []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Weight string `xml:"weight"`
-	} `xml:"user"`
 }
 
 //track.getTopTags
@@ -267,10 +180,6 @@ type TrackSearch struct {
 		} `xml:"image"`
 	} `xml:"trackmatches>track"`
 }
-
-//track.share (empty)
-
-//track.unban (empty)
 
 //track.unlove (empty)
 

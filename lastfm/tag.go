@@ -56,29 +56,11 @@ func (api tagApi) GetTopTracks(args map[string]interface{}) (result TagGetTopTra
 	return
 }
 
-//tag.getWeeklyArtistChart
-func (api tagApi) GetTopWeeklyArtistChart(args map[string]interface{}) (result TagGetWeeklyArtistChart, err error) {
-	defer func() { appendCaller(err, "lastfm.Tag.GetWeeklyArtistChart") }()
-	err = callGet("tag.getweeklyartistchart", api.params, args, &result, P{
-		"plain": []string{"tag", "from", "to", "limit"},
-	})
-	return
-}
-
 //tag.getWeeklyChartList
 func (api tagApi) GetTopWeeklyChartList(args map[string]interface{}) (result TagGetWeeklyChartList, err error) {
 	defer func() { appendCaller(err, "lastfm.Tag.GetWeeklyChartList") }()
 	err = callGet("tag.getweeklychartlist", api.params, args, &result, P{
 		"plain": []string{"tag"},
-	})
-	return
-}
-
-//tag.search
-func (api tagApi) Search(args map[string]interface{}) (result TagSearch, err error) {
-	defer func() { appendCaller(err, "lastfm.Tag.Search") }()
-	err = callGet("tag.search", api.params, args, &result, P{
-		"plain": []string{"tag", "limit", "page"},
 	})
 	return
 }

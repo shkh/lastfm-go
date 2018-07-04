@@ -4,33 +4,6 @@ import "encoding/xml"
 
 //album.addTags (empty)
 
-//album.getBuylinks
-type AlbumGetBuylinks struct {
-	XMLName   xml.Name `xml:"affiliations"`
-	Physicals []struct {
-		SupplierName string `xml:"supplierName"`
-		SupplierIcon string `xml:"supplierIcon"`
-		Price        struct {
-			Currency  string `xml:"currency"`
-			Amount    string `xml:"amount"`
-			Formatted string `xml:"formatted"`
-		} `xml:"price"`
-		Buylink  string `xml:"buylink"`
-		IsSearch string `xml:"isSearch"`
-	} `xml:"physicals>affiliation"`
-	Downloads []struct {
-		SupplierName string `xml:"supplierName"`
-		SupplierIcon string `xml:"supplierIcon"`
-		Price        struct {
-			Currency  string `xml:"currency"`
-			Amount    string `xml:"amount"`
-			Formatted string `xml:"formatted"`
-		} `xml:"price"`
-		Buylink  string `xml:"buylink"`
-		IsSearch string `xml:"isSearch"`
-	} `xml:"downloads>affiliation"`
-}
-
 //album.getInfo
 type AlbumGetInfo struct {
 	XMLName     xml.Name `xml:"album"`
@@ -71,22 +44,6 @@ type AlbumGetInfo struct {
 		Summary   string `xml:"summary"`
 		Content   string `xml:"content"`
 	} `xml:"wiki"`
-}
-
-//album.getShouts
-type AlbumGetShouts struct {
-	XMLName    xml.Name `xml:"shouts"`
-	Artist     string   `xml:"artist,attr"`
-	Album      string   `xml:"album,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Shouts     []struct {
-		Body   string `xml:"body"`
-		Author string `xml:"author"`
-		Date   string `xml:"date"`
-	} `xml:"shout"`
 }
 
 //album.getTags
@@ -140,5 +97,3 @@ type AlbumSearch struct {
 		Mbid       string `xml:"mbid"`
 	} `xml:"albummatches>album"`
 }
-
-//album.share (empty)

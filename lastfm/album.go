@@ -13,29 +13,11 @@ func (api albumApi) AddTags(args map[string]interface{}) (err error) {
 	return
 }
 
-//album.getBuylinks
-func (api albumApi) GetBuylinks(args map[string]interface{}) (result AlbumGetBuylinks, err error) {
-	defer func() { appendCaller(err, "lastfm.Album.GetBuylinks") }()
-	err = callGet("album.getbuylinks", api.params, args, &result, P{
-		"plain": []string{"artist", "album", "mbid", "autocorrect", "country"},
-	})
-	return
-}
-
 //album.getInfo
 func (api albumApi) GetInfo(args map[string]interface{}) (result AlbumGetInfo, err error) {
 	defer func() { appendCaller(err, "lastfm.Album.GetInfo") }()
 	err = callGet("album.getinfo", api.params, args, &result, P{
 		"plain": []string{"artist", "album", "mbid", "autocorrect", "username", "lang"},
-	})
-	return
-}
-
-//album.getShouts
-func (api albumApi) GetShouts(args map[string]interface{}) (result AlbumGetShouts, err error) {
-	defer func() { appendCaller(err, "lastfm.Album.GetShouts") }()
-	err = callGet("album.getshouts", api.params, args, &result, P{
-		"plain": []string{"artist", "album", "mbid", "limit", "autocorrect", "page"},
 	})
 	return
 }
@@ -78,15 +60,6 @@ func (api albumApi) Search(args map[string]interface{}) (result AlbumSearch, err
 	defer func() { appendCaller(err, "lastfm.Album.Search") }()
 	err = callGet("album.search", api.params, args, &result, P{
 		"plain": []string{"limit", "page", "album"},
-	})
-	return
-}
-
-//album.share
-func (api albumApi) Share(args map[string]interface{}) (err error) {
-	defer func() { appendCaller(err, "lastfm.Album.Share") }()
-	err = callPost("album.share", api.params, args, nil, P{
-		"plain": []string{"artist", "album", "public", "message", "recipient"},
 	})
 	return
 }

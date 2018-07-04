@@ -112,25 +112,6 @@ type TagGetTopTracks struct {
 	} `xml:"track"`
 }
 
-//tag.getWeeklyArtistChart
-type TagGetWeeklyArtistChart struct {
-	XMLName xml.Name `xml:"weeklyartistchart"`
-	From    string   `xml:"from,attr"`
-	To      string   `xml:"to,attr"`
-	Artists []struct {
-		Rank       string `xml:"rank,attr"`
-		Name       string `xml:"name"`
-		Weight     string `xml:"weight"`
-		Mbid       string `xml:"mbid"`
-		Url        string `xml:"url"`
-		Streamable string `xml:"streamable"`
-		Images     []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-	} `xml:"artist"`
-}
-
 //tag.getWeeklyChartList
 type TagGetWeeklyChartList struct {
 	XMLName xml.Name `xml:"weeklychartlist"`
@@ -139,24 +120,4 @@ type TagGetWeeklyChartList struct {
 		From string `xml:"from,attr"`
 		To   string `xml:"to,attr"`
 	} `xml:"chart"`
-}
-
-//tag.search
-type TagSearch struct {
-	XMLName    xml.Name `xml:"results"`
-	OpenSearch string   `xml:"opensearch,attr"`
-	For        string   `xml:"for,attr"`
-	Query      struct {
-		Role        string `xml:"role,attr"`
-		SearchTerms string `xml:"searchTrems,attr"`
-		StartPage   int    `xml:"startPage,attr"`
-	} `xml:"Query"`
-	TotalResults int `xml:"totalResults"`
-	StartIndex   int `xml:"startIndex"`
-	ItemsPerPage int `xml:"itemsPerPage"`
-	TagMatches   []struct {
-		Name  string `xml:"name"`
-		Count string `xml:"count"`
-		Url   string `xml:"url"`
-	} `xml:"tagmatches>tag"`
 }

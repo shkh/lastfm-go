@@ -21,64 +21,6 @@ type ArtistGetCorrection struct {
 	} `xml:"correction"`
 }
 
-//artist.getEvents
-type ArtistGetEvents struct {
-	XMLName       xml.Name `xml:"events"`
-	Geo           string   `xml:"geo,attr"`
-	Artist        string   `xml:"artist,attr"`
-	FestivalsOnly string   `xml:"festivalsonly,attr"`
-	Total         int      `xml:"total,attr"`
-	Page          int      `xml:"page,attr"`
-	PerPage       int      `xml:"perPage,attr"`
-	TotalPages    int      `xml:"totalPages,attr"`
-	Events        []struct {
-		Id      string `xml:"id"`
-		Title   string `xml:"title"`
-		Artists struct {
-			Headliner string   `xml:"headliner"`
-			Artists   []string `xml:"artist"`
-		} `xml:"artists"`
-		Venue struct {
-			Id       string `xml:"id"`
-			Name     string `xml:"name"`
-			Location struct {
-				City       string `xml:"city"`
-				Country    string `xml:"country"`
-				Street     string `xml:"street"`
-				Postalcode string `xml:"postalcode"`
-				Point      struct {
-					Lat  string `xml:"lat"`
-					Long string `xml:"long"`
-				} `xml:"point"`
-			} `xml:"location"`
-			Url         string `xml:"url"`
-			Website     string `xml:"website"`
-			PhoneNumber string `xml:"phonenumber"`
-			Images      []struct {
-				Size string `xml:"size,attr"`
-				Url  string `xml:",chardata"`
-			} `xml:"image"`
-		} `xml:"venue"`
-		StartDate   string `xml:"startDate"`
-		Description string `xml:"description"`
-		Images      []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Attendance string `xml:"attendance"`
-		Reviews    string `xml:"reviews"`
-		Tag        string `xml:"tag"`
-		Url        string `xml:"url"`
-		Website    string `xml:"website"`
-		Tickets    []struct {
-			Supplier string `xml:"supplier,attr"`
-			Url      string `xml:",chardata"`
-		} `xml:"tickets>ticket"`
-		Canceled string   `xml:"canceled"`
-		Tags     []string `xml:"tags>tag"`
-	} `xml:"event"`
-}
-
 //artist.getInfo
 type ArtistGetInfo struct {
 	Name   string `xml:"name"`
@@ -125,107 +67,6 @@ type ArtistGetInfo struct {
 		Content    string `xml:"content"`
 		YearFormed string `xml:"yearformed"`
 	} `xml:"bio"`
-}
-
-//artist.getPastEvents
-type ArtistGetPastEvents struct {
-	XMLName       xml.Name `xml:"events"`
-	Artist        string   `xml:"artist,attr"`
-	Url           string   `xml:"url,attr"`
-	Geo           string   `xml:"geo,attr"`
-	FestivalsOnly string   `xml:"festivalsonly,attr"`
-	Total         int      `xml:"total,attr"`
-	Page          int      `xml:"page,attr"`
-	PerPage       int      `xml:"perPage,attr"`
-	TotalPages    int      `xml:"totalPages,attr"`
-	Events        []struct {
-		Id      string `xml:"id"`
-		Title   string `xml:"title"`
-		Artists struct {
-			Headliner string   `xml:"headliner"`
-			Artists   []string `xml:"artist"`
-		} `xml:"artists"`
-		Venue struct {
-			Id       string `xml:"id"`
-			Name     string `xml:"name"`
-			Location struct {
-				City       string `xml:"city"`
-				Country    string `xml:"country"`
-				Street     string `xml:"street"`
-				Postalcode string `xml:"postalcode"`
-				Point      struct {
-					Lat  string `xml:"lat"`
-					Long string `xml:"long"`
-				} `xml:"point"`
-			} `xml:"location"`
-			Url         string `xml:"url"`
-			Website     string `xml:"website"`
-			PhoneNumber string `xml:"phonenumber"`
-			Images      []struct {
-				Size string `xml:"size,attr"`
-				Url  string `xml:",chardata"`
-			} `xml:"image"`
-		} `xml:"venue"`
-		StartDate   string `xml:"startDate"`
-		Description string `xml:"description"`
-		Images      []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Attendance string `xml:"attendance"`
-		Reviews    string `xml:"reviews"`
-		Tag        string `xml:"tag"`
-		Url        string `xml:"url"`
-		Website    string `xml:"website"`
-		Tickets    []struct {
-			Supplier string `xml:"supplier,attr"`
-			Url      string `xml:",chardata"`
-		} `xml:"tickets>ticket"`
-		Canceled string   `xml:"canceled"`
-		Tags     []string `xml:"tags>tag"`
-	} `xml:"event"`
-}
-
-//artist.getPodcast
-type ArtistGetPodcast struct {
-	XMLName xml.Name `xml:"rss"`
-	Itunes  string   `xml:"itunes,attr"`
-	Version string   `xml:"version,attr"`
-	Channel struct {
-		Title       string `xml:"title"`
-		Link        string `xml:"link"`
-		Description string `xml:"description"`
-		Items       []struct {
-			Title string `xml:"title"`
-			Guid  struct {
-				IdPermalink string `xml:"isPermalink,attr"`
-				Guid        string `xml:",chardata"`
-			} `xml:"guid"`
-			Author    string `xml:"author"`
-			Enclosure struct {
-				Url    string `xml:"url,attr"`
-				Length string `xml:"length,attr"`
-				Type   string `xml:"type,attr"`
-			}
-			Description string `xml:"description"`
-			Link        string `xml:"link"`
-		} `xml:"item"`
-	} `xml:"channel"`
-}
-
-//artist.getShouts
-type ArtistGetShouts struct {
-	XMLName    xml.Name `xml:"shouts"`
-	Artist     string   `xml:"artist,attr"`
-	Total      int      `xml:"total,attr"`
-	Page       int      `xml:"page,attr"`
-	PerPage    int      `xml:"perPage,attr"`
-	TotalPages int      `xml:"totalPages,attr"`
-	Shouts     []struct {
-		Body   string `xml:"body"`
-		Author string `xml:"author"`
-		Date   string `xml:"date"`
-	} `xml:"shout"`
 }
 
 //artist.getSimilar
@@ -281,22 +122,6 @@ type ArtistGetTopAlbums struct {
 	} `xml:"album"`
 }
 
-//artist.getTopFans
-type ArtistGetTopFans struct {
-	XMLName xml.Name `xml:"topfans"`
-	Artist  string   `xml:"artist,attr"`
-	Users   []struct {
-		Name     string `xml:"name"`
-		RealName string `xml:"realname"`
-		Url      string `xml:"url"`
-		Images   []struct {
-			Size string `xml:"size,attr"`
-			Url  string `xml:",chardata"`
-		} `xml:"image"`
-		Weight string `xml:"weight"`
-	} `xml:"user"`
-}
-
 //artist.getTopTags
 type ArtistGetTopTags struct {
 	XMLName xml.Name `xml:"toptags"`
@@ -350,7 +175,3 @@ type ArtistSearch struct {
 		Listeners string `xml:"listeners"`
 	} `xml:"artistmatches>artist"`
 }
-
-//artist.share (empty)
-
-//artist.shout (empty)
