@@ -22,11 +22,11 @@ First, create an API instance with your `API KEY` and `API SECRET`.
 Note that some API methods require your user's permission, so make sure that your requests are authenticated before calling these methods. See "Authentication" section.
 
 API instances contain the structs which represent API classes, and each struct has methods corresponding to their API methods.
-So you can call `user.getNeighbours` for example as following:
+So you can call `artist.getTopTracks` for example as following:
 
-	result, _ := api.User.GetNeighbours (lastfm.P{"user": "shkh_"}) //discarding error
-	for _, u := range result.Users {
-		fmt.Println (u.Name, u.Match)
+	result, _ := api.Artist.GetTopTracks(lastfm.P{"artist": "Avicii"}) //discarding error
+	for _, track := range result.Tracks {
+		fmt.Println(track.Name)
 	}
 
 Methods that fetch some data return their result as a struct named `ClassMethod` (e.g. api.User.GetInfo returns its result of type UserGetInfo).
@@ -42,12 +42,6 @@ Slice of string, []string, can be used for passing multiple values for a key.
 		"artist": "Kaene",
 		"album":  "Strangeland",
 		"tags":   []string{"britpop", "alternative rock", "2012"},
-	})
-
-	//library.addAlbum (auth required)
-	api.Library.AddAlbum(lastfm.P{ //discarding error
-		"artist": []string{"Ellie Goulding", "Keane"},
-		"album":  []string{"Goodness Gracious", "Higher Than The Sun"},
 	})
 
 
