@@ -13,17 +13,11 @@ type Api struct {
 	Album       *albumApi
 	Artist      *artistApi
 	Chart       *chartApi
-	Event       *eventApi
 	Geo         *geoApi
-	Group       *groupApi
 	Library     *libraryApi
-	Playlist    *playlistApi
-	Radio       *radioApi
 	Tag         *tagApi
-	Tasteometer *tasteometerApi
 	Track       *trackApi
 	User        *userApi
-	Venue       *venueApi
 }
 
 type apiParams struct {
@@ -40,17 +34,11 @@ func New(key, secret string) (api *Api) {
 		Album:       &albumApi{&params},
 		Artist:      &artistApi{&params},
 		Chart:       &chartApi{&params},
-		Event:       &eventApi{&params},
 		Geo:         &geoApi{&params},
-		Group:       &groupApi{&params},
 		Library:     &libraryApi{&params},
-		Playlist:    &playlistApi{&params},
-		Radio:       &radioApi{&params},
 		Tag:         &tagApi{&params},
-		Tasteometer: &tasteometerApi{&params},
 		Track:       &trackApi{&params},
 		User:        &userApi{&params},
-		Venue:       &venueApi{&params},
 	}
 	return
 }
