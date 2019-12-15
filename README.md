@@ -1,7 +1,7 @@
 # Lastfm-go
 Golang wrapper for the Last.fm API 2.0
 
-[https://www.lastfm.jp/api](https://www.lastfm.jp/api)
+[https://www.last.fm/api/](https://www.last.fm/api/)
 
 # Setup
 
