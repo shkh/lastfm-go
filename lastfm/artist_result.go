@@ -33,7 +33,8 @@ type ArtistGetInfo struct {
 	Streamable string `xml:"streamable"`
 	Stats      struct {
 		Listeners string `xml:"listeners"`
-		Plays     string `xml:"plays"`
+		Plays     string `xml:"playcount"`
+		UserPlays string `xml:"userplaycount"`
 	} `xml:"stats"`
 	//Similar struct {
 	//Artists []struct {

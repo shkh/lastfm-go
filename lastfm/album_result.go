@@ -17,9 +17,10 @@ type AlbumGetInfo struct {
 		Size string `xml:"size,attr"`
 		Url  string `xml:",chardata"`
 	} `xml:"image"`
-	Listeners string `xml:"listeners"`
-	PlayCount string `xml:"plyacount"`
-	Tracks    []struct {
+	Listeners     string `xml:"listeners"`
+	PlayCount     string `xml:"playcount"`
+	UserPlayCount string `xml:"userplaycount"`
+	Tracks        []struct {
 		Rank       string `xml:"rank,attr"`
 		Name       string `xml:"name"`
 		Duration   string `xml:"duration"`
